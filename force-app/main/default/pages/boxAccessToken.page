@@ -1,0 +1,35 @@
+<apex:page controller="BoxDotComExample" action="{!createCode}">
+    <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockButtons location="bottom">
+        	<apex:commandButton value="Get Accesstoken" action="{!generateToken}"/>
+            <apex:commandButton value="Create Folder" action="{!createFolder}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection >
+        	<apex:pageBlockSectionItem >
+                <apex:outputLabel value="clientId"/>
+            	<apex:inputText value="{!clientid}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="ClientSecret" />
+                    <apex:inputText value="{!clientSecret}" />
+                </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Enter callbackURL"/>
+            	<apex:inputText value="{!callbackurl}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Token"/>
+                <apex:inputText value="{!code}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="AccessToken"/>
+                <apex:inputText value="{!accesstoken}"/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+        	result:"{!result}"
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+        </apex:form>
+</apex:page>

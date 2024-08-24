@@ -1,0 +1,15 @@
+<apex:page setup="false" sidebar="false" showHeader="true" controller="actionSupport" tabStyle="Account" action="{!supportAccounts}">
+    <apex:sectionHeader title="Support" subtitle="actionSupport"/>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="SupportAction: {!lstAccounts.size}" collapsible="true">
+            <apex:actionPoller interval="5" action="{!supportAccounts}" rerender="PG"/>
+                <apex:pageBlockTable value="{!lstAccounts}" var="acc" id="PG">
+                    <apex:column headerValue="Id" value="{!acc.id}"/>
+                    <apex:column headerValue="Name" value="{!acc.name}"/>
+                    <apex:column headerValue="Industry" value="{!acc.Industry}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

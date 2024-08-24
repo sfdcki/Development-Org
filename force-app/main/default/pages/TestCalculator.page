@@ -1,0 +1,20 @@
+<apex:page setup="false" sidebar="false" showheader="true" tabStyle="Prospect__c" controller="Calculator">
+<apex:sectionHeader title="Calculator" subtitle="New Calculator"/>
+<apex:form >
+    <apex:pageMessages id="errors"></apex:pageMessages>
+    <apex:pageBlock >
+        <apex:pageblockButtons location="bottom">
+            <apex:commandButton value="Sum" action="{!sum}" rerender="result,errors"/>
+            <apex:CommandButton value="Substract" action="{!sub}" rerender="result,errors"/>       
+            <apex:commandbutton value="Multiplication" action="{!mul}" rerender="result,errors"/>  
+            <apex:commandButton value="Divide" action="{!div}" rerender="result,errors"/>  
+        </apex:pageblockButtons>
+        <apex:pageBlockSection Columns="2" title="Input to Calculator" collapsible="true">
+            <apex:inputText label="Enter First Value" value="{!firstNumber}" required="true"/>
+            <apex:inputText label="Enter Second Value" value="{!secondNumber}" required="true"/>
+             <apex:outputLabel id="result">The result is: {!result}</apex:outputLabel> 
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+
+</apex:page>

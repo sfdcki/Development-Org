@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="ContactDetailController">
+  <apex:detail subject="{!accountid}" relatedList="false" title="true" inlineEdit="true" showChatter="true">
+      <apex:relatedList list="Contacts"/>
+  </apex:detail>
+</apex:page>

@@ -1,0 +1,59 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <ltng:require scripts="/resource/jquery/lib/jquery-1.11.3.min.js"/>
+    <aura:attribute name="myEmail" type="string"/>
+    <aura:attribute name="myName" type="string"/>
+    <aura:attribute name="selectedValues" type="Object"/>
+    <div class="container">
+		<form class="slds-form--stacked">
+            
+                    <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="6" class="slds-p-bottom_large">
+                        <lightning:layout horizontalAlign="" verticalAlign="" multipleRows="" class="error-wrapper">
+                            <lightning:layoutItem padding="" flexibility="grow" size="" class="">
+                                <lightning:input aura:id="firstName" label="{!v.labelText1}" name="firstName" required="true" value="{!v.selectedValues.firstName}" onchange="{!c.onBlur}" onblur="{!c.onBlur}" pattern="^[a-zA-Z\s]*" maxlength="40"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem aura:id="firstNameError" padding="" size="" class="input-error">
+                                <lightning:helptext content="{!v.firstNameMessage}" title="" iconName="utility:error"/>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </lightning:layoutItem>
+    
+		<!--	<div class="slds-form-element slds-is-required">
+				<div class="slds-form-element__control">
+					<ui:inputText aura:id="inputName" label="Name"
+                        class="slds-input"
+                        labelClass="slds-form-element__label"
+                        value="{!v.myName}"
+                        required="true"/>
+                </div>
+            </div>
+    		<div class="slds-form-element">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputText aura:id="inputEmail" label="Email"
+                            class="slds-input"
+                            labelClass="slds-form-element__label"
+                            value="{!v.myEmail}"
+                            required="false"/>
+                    </div>
+                </div>
+            </div><br/><br/> -->
+            <b><h1 class="secondcon">Please complete captcha to contact us</h1><br/></b> 
+            <div class="slds-form-element" id='captchid'>
+              <div style="float:left; width: 23%;" id='subid'> 
+                  <iframe aura:id="vfFrame" src="/apex/MyVfCAPTCHA" scrolling="no" frameborder="0" height="500px" allowtransparency="true"/></div>  
+                <div style="float:right; width: 77%; "><ui:button label="Submit"
+                       class="slds-button slds-button-neutral"
+                       labelClass="label"
+                       press="{!c.submitSomething}"/></div> 
+            </div>
+            
+        <!--    <div class="slds-form-element" width="30%" align="middle">
+				<ui:button label="Submit"
+                       class="slds-button slds-button-neutral"
+                       labelClass="label"
+                       press="{!c.submitSomething}"/>
+            </div>-->
+        </form>
+    </div>
+</aura:component>

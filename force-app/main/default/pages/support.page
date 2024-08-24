@@ -1,0 +1,51 @@
+<apex:page setup="false" showHeader="false">
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script src="../../soap/ajax/36.0/connection.js" type="text/javascript"></script>
+    <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){
+        j$("#but").click(function() {
+            nam = j$("#name").val();
+            ema = j$("#email").val();
+                var result = sforce.connection.login("uday_kiran_87@yahoo.com","UDay1234@F50xIhJKNyahxfWglDXhjgKeR"); 
+            	sforce.connection.sessionId = result.sessionId;
+            //var __sfdcSessionId = '{!GETSESSIONID()}'; 
+        
+            var hmans = new sforce.SObject("Hiring_Manager__c");
+          
+                var hmanagers = [];
+                hmans.Name = nam; 
+                hmans.eMail_Id__c = ema; 
+                hmanagers.push(hmans);
+       
+                var recResult = sforce.connection.create(hmanagers);
+            alert(recResult);
+            
+        	liveagent.startChat('57328000000Ceg3');
+            
+            j$("#name").val('');
+            j$("#email").val('');
+        });
+        });
+        </script>
+<apex:form >
+    Enter name: <input type="text" id="name"/><br/>
+    Enter email: <input type="email" id="email"/><br/>
+    <input type="button" id="but" value="enter chat"/><br/>
+    
+ <!--   <img id="liveagent_button_online_57328000000Ceg3" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('57328000000Ceg3')" src="https://udaykiran99-developer-edition.ap2.force.com/customersupport/resource/1475170086000/Online" /><img id="liveagent_button_offline_57328000000Ceg3" style="display: none; border: 0px none; " src="https://udaykiran99-developer-edition.ap2.force.com/customersupport/resource/1475170132000/Offline" /> -->
+    </apex:form>
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('57328000000Ceg3', document.getElementById('liveagent_button_online_57328000000Ceg3'));
+                            liveagent.setChatWindowHeight(100);
+            liveagent.setChatWindowWidth(100);
+liveagent.showWhenOffline('57328000000Ceg3', document.getElementById('liveagent_button_offline_57328000000Ceg3'));
+});</script>
+    
+
+<script type='text/javascript' src='https://c.la10.salesforceliveagent.com/content/g/js/37.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la10.salesforceliveagent.com/chat', '572280000008S2p', '00D28000001DnKH');
+</script>
+</apex:page>

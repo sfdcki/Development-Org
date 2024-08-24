@@ -1,0 +1,13 @@
+<apex:page controller="HttpExample1" >
+   <apex:form >
+    	<apex:pageBlock title="Account">
+            Account Name : <apex:inputText value="{!accName}" />
+            <apex:commandButton value="Submit" action="{!getData}" />
+            <apex:pageBlockTable value="{!mapres}" var="a">
+            	<apex:column >
+                	{!a}  :: {!mapres[a]}
+                </apex:column>
+            </apex:pageBlockTable>
+       </apex:pageBlock>
+    </apex:form>
+</apex:page>

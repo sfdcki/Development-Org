@@ -1,0 +1,196 @@
+
+
+<html>
+	<body>
+		<style type="text/css">
+			.DivPos {
+			margin:250px;
+			height:200px;
+			text-align:center;
+			}
+		</style>
+		<script type="text/javascript">
+			var win = window.name;
+			var params = {};
+			var queryString = window.location.search.substring(1);
+			var parts = location.search.substring(1).split('&');
+			
+			for (var i = 0; i < parts.length; i++) {
+				var nv = parts[i].split('=');
+				if (!nv[0]) continue;
+				params[nv[0]] = nv[1] || true;
+			}
+			
+			var ButtonId = params.pbtnId;
+			var Button = ButtonId.substr(0, 15);
+			var RecordType= params.pRTId;
+			var DeploymentId= params.pdpId;
+			var Deployment = DeploymentId.substr(0, 15);
+			var sCountry = params.pCtry;
+			var sRole = params.prole;
+			var sCategory = params.pcat;
+			var sSubject = params.psub;
+			var sSubjectKA=sSubject.replace(new RegExp('%20', 'g'), ' ');
+			var sProduct = params.pprod;
+			var sLang = params.plang;
+            var school = params.pschool;
+            var schoolid = params.pschoolid;
+			var OrgId = params.porgId;
+			var org = OrgId.substr(0, 15);
+			var onlinemsg=params.pOnline;
+			var sProductName =params.pprodName;
+			var onlineAgent=onlinemsg.replace(new RegExp('%20', 'g'), ' ');
+			var offlinemsg=params.pOffline;
+			var offlineAgent=offlinemsg.replace(new RegExp('%20', 'g'), ' ');
+			if(params.pfn !=null)
+			{
+				var sFstName=params.pfn.replace(new RegExp('%20', 'g'), ' ');
+			}
+			if(params.pln !=null)
+			{
+				var sLstName=params.pln.replace(new RegExp('%20', 'g'), ' ');
+			}
+			if(params.pel !=null)	
+			{
+				var sEml=params.pel.replace(new RegExp('%20', 'g'), ' ');
+			}
+			if(params.pph !=null)
+			{
+				var sPhn=params.pph.replace(new RegExp('%20', 'g'), ' ');
+			}
+			
+			var onlineButton = document.createElement('a');
+			var linkText = document.createTextNode("");
+			onlineButton .appendChild(linkText);
+			onlineButton .title = "AgentOnline";
+			onlineButton .href = "javascript://Chat";
+			onlineButton .id = 'liveagent_button_online_'+Button;
+			document.body.appendChild(onlineButton );
+			
+			var offlineButton = document.createElement('a');
+			var linkText = document.createTextNode("");
+			offlineButton .appendChild(linkText);
+			offlineButton .title = "AgentOffline";
+			offlineButton .href = "javascript://Chat";
+			offlineButton .id = 'liveagent_button_offline_'+Button;
+			document.body.appendChild(offlineButton);
+			
+			var iDiv = document.createElement('div');
+			
+			iDiv.id = 'divWaitingMsg';
+			iDiv.className = 'DivPos';
+			document.getElementsByTagName('body')[0].appendChild(iDiv);
+			
+			document.getElementById("divWaitingMsg").innerHTML = onlineAgent;
+			
+			var iDiv2 = document.createElement('div');
+			iDiv2.id = 'divAgentNotAvailableMsg';
+			iDiv2.className = 'DivPos';
+			document.getElementsByTagName('body')[0].appendChild(iDiv2);
+			
+			
+			function callonload(){
+				var onlineValue;
+				onlineValue = document.getElementById('liveagent_button_online_'+Button).style.display;
+				console.log('inside onload');
+				console.log('online button display value'+document.getElementById('liveagent_button_online_'+Button).style.display+'***');
+				if(document.getElementById('liveagent_button_offline_'+Button).style.display == '' ||  document.getElementById('liveagent_button_online_'+Button).style.display == 'none'){
+					
+					document.getElementById('divWaitingMsg').style.display = 'none';
+                	document.getElementById("divAgentNotAvailableMsg").innerHTML = offlineAgent;
+					
+					var delay=1500; //1 seconds
+            		setTimeout(function(){
+						//document.body.appendChild(offlineButton);
+                 		window.parent.close();
+					}, delay);
+					delay=delay+2000;
+					
+				}
+				else if(document.getElementById('liveagent_button_offline_'+Button).style.display == 'none' ||  document.getElementById('liveagent_button_online_'+Button).style.display == ''){
+					console.log('inside online if');
+					document.getElementById('divWaitingMsg').style.display = 'none';
+					document.getElementById("divAgentNotAvailableMsg").innerHTML = 'Please hold while we connect you to an agent.';
+					try	{
+						liveagent.startChatWithWindow(Button,win);
+					}
+					catch(e){
+						console.log('online error'+e);
+						setTimeout(function(){
+							try{
+								liveagent.startChatWithWindow(Button,win);
+								}catch(e){
+								console.log('online error 2'+e);
+							}},1000);}
+				}
+				
+				
+			}
+			
+			function initrecordtype(){
+				console.log('add details'+sEml);
+				if(window.location.href.indexOf("testbau-pearsoncommunity.cs83.force.com/getsupport/resource/"))
+				{
+					liveagent.addCustomDetail('CaseRecTypeName','TechSupport',false);
+				}
+				else
+				{
+					liveagent.addCustomDetail('CaseRecTypeName','Other');
+				}
+				liveagent.addCustomDetail('CaseRecType',RecordType,false);
+				liveagent.addCustomDetail('Country',sCountry,false);
+				liveagent.addCustomDetail('Role',sRole,false);
+				liveagent.addCustomDetail('Category',sCategory,false);
+				liveagent.addCustomDetail('Subject',sSubjectKA,false);
+				liveagent.addCustomDetail('Product',sProduct,false);
+				liveagent.addCustomDetail('ProductName',sProductName,false);
+				liveagent.addCustomDetail('SchlName',school,false);
+				liveagent.addCustomDetail('Lang',sLang,false);
+				liveagent.addCustomDetail('Subject',sSubjectKA,false).doKnowledgeSearch();
+                if(params.pschoolid !=null)
+                {
+                    liveagent.addCustomDetail('Schlid',schoolid,false);
+                }
+				if(params.pfn !=null)
+				{
+					liveagent.addCustomDetail('UserFstName',sFstName,false);
+				}
+				if(params.pln !=null)
+				{
+					liveagent.addCustomDetail('UserLstName',sLstName,false);
+				}
+				if(params.pel !=null)
+				{
+					liveagent.addCustomDetail('UserEmail',sEml,false);
+				}
+				if(params.pph !=null)
+				{
+					liveagent.addCustomDetail('UserPhone',sPhn,false);
+				}
+				console.log('details added');
+			}
+		</script>
+		
+		<script type='text/javascript'>
+			if (!window._laq) { window._laq = []; }
+			window._laq.push(function(){
+				liveagent.showWhenOnline(Button, document.getElementById('liveagent_button_online_'+Button ));
+				liveagent.showWhenOffline(Button, document.getElementById('liveagent_button_offline_'+Button ));
+				try{setTimeout(callonload,4000);}catch(e){console.log('callonloaderror'+e);callonload();}
+			}
+			);
+		</script>
+		
+		<script type='text/javascript' src='https://c.la1-c2cs-frf.salesforceliveagent.com/content/g/js/40.0/deployment.js'></script>
+		<script type='text/javascript'>
+			
+			initrecordtype();
+			liveagent.init('https://d.la1-c2cs-frf.salesforceliveagent.com/chat',Deployment,org);
+			liveagent.enableLogging();
+			console.log('**liveagent object**'+liveagent);
+			
+		</script>
+		
+	</body>
+</html>
+

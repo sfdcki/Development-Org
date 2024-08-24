@@ -1,0 +1,38 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:stylesheet value="{!$Resource.style}"/>
+ <!--   <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" /> -->
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function(){
+    	j$("#click").mousemove(function(e){
+        	var text = j$(this).attr('hovertext');
+            j$(".hoverdiv").text(text);
+            j$(".hoverdiv").css('display','block');
+            j$(".hoverdiv").css('top',e.clientY+10).css('left',e.clientX+10);
+        }).mouseout(function(){
+        	j$(".hoverdiv").css('display','none');
+        });
+  
+    
+});
+ </script>
+    <style>
+    
+    	.hoverdiv{
+        	display: none;
+        	background-color: #faf;
+        	position: absolute;
+        	border: 1px solid #777;
+        	padding: 7px;
+        	width: 200px;
+        }
+    </style>
+    <apex:form >
+        
+        <a href="https://www.google.co.in" id="click" hovertext="Google is a powerful Engine!">Google</a>
+        <div class="hoverdiv" ></div>
+    	   
+        
+    </apex:form>
+</apex:page>

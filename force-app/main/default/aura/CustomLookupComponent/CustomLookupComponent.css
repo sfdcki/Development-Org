@@ -1,0 +1,12 @@
+.THIS .leftPaddingClass {
+    padding-left: 2rem;
+}
+ 
+.THIS .pillSize{
+ width:100%;
+}
+
+.THIS .emsg{
+    font-size:.75rem;
+    color: rgb(194, 57, 52);
+}

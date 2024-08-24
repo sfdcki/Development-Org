@@ -1,0 +1,16 @@
+<apex:page >
+    <script src="../../soap/ajax/36.0/connection.js" type="text/javascript">
+    </script>
+    <script>
+    var hmanagers = []; 
+    var result = sforce.connection.login("uday_kiran_87@yahoo.com","Uday1234@8WPgcOJaMUJrQG3PARQ8M8eeF");
+        sforce.connection.sessionId = result.sessionId;
+        alert(result.sessionId);
+        var hmans = new sforce.SObject("Hiring_Manager__c");
+        hmans.Name = "AJAX test record3";
+        hmans.eMail_Id__c = "ajax3@yahoo.com";
+        hmanagers.push(hmans);
+        var recResult = sforce.connection.create(hmanagers);
+        alert(recResult);
+    </script>
+</apex:page>

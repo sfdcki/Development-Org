@@ -1,0 +1,27 @@
+<apex:page setup="false" sidebar="false" showheader="true" controller="ContactsByAccount" action="{!Show}" tabStyle="Account">
+<apex:sectionHeader title="Contacts" subtitle="Contacts By Accounts"/>
+<apex:form >
+<apex:pageblock >
+    <apex:pageblockButtons location="top">
+    </apex:pageblockButtons>
+    <apex:pageblockSection >
+        <apex:selectList label="Select Account" multiselect="false" size="1" value="{!AccId}">
+         <apex:actionsupport event="onchange" rerender="ID" action="{!ContactAcc}"/>
+            <apex:selectoptions value="{!Accselect}">
+            </apex:selectoptions>
+        </apex:selectList>
+    </apex:pageblockSection>
+   
+    <apex:pageblocksection title="Contact Details count {!Con.size}" >
+    
+        <apex:pageblocktable value="{!Con}" var="v" id="ID">
+   
+            <apex:column headerValue="Contact Id" value="{!v.id}"/>
+            <apex:column headerValue="Contact Name" value="{!v.name}"/>
+            <apex:column headerValue="Contact Email" value="{!v.Email}"/>
+            <apex:column headerValue="Contact Phone" value="{!v.Phone}"/>
+        </apex:pageblocktable>
+    </apex:pageblocksection>
+</apex:pageblock>
+</apex:form>
+</apex:page>

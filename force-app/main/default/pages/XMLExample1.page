@@ -1,0 +1,7 @@
+<apex:page controller="XMLExample1">
+    <apex:form >
+    	<apex:pageBlock >
+        	{!result}
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

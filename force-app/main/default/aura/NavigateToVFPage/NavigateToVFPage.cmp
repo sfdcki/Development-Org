@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <ltng:require scripts="/resource/jquery/lib/jquery-1.11.3.min.js" afterScriptsLoaded="{!c.loadscript}"/>
+	
+</aura:component>

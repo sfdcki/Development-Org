@@ -1,0 +1,32 @@
+<apex:page > 
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){          
+           j$("input[id$='contactMethod\\:0']").change(function(){
+               j$("#address").css('display','block');   
+               j$("#Phone").css('display','none');                 
+            });               
+            j$("input[id$='contactMethod\\:1']").change(function(){
+                  j$("#address").css('display','none');                
+                j$("#Phone").css('display','block');  
+            });
+        });        
+     </script>
+<apex:form id="form">
+<apex:outputPanel id="value1">
+        <apex:selectRadio layout="pageDirection"  id="contactMethod">
+            <apex:selectOption itemLabel="Address" itemValue="a"/>
+            <apex:selectOption itemLabel="Phone Number" itemValue="f"/>
+   <!--         <apex:actionSupport event="onchange" reRender=""/>       -->
+        </apex:selectRadio>  </apex:outputPanel>
+    <div id="Phone" style="display:none;">
+            Phone:  <input type="text" id="PhoneId"/>
+        </div>
+       
+        <div id="address" style="display:none;">
+            Address: <input type="text" id="AddressId"/>
+        </div>
+        
+    </apex:form>
+</apex:page>

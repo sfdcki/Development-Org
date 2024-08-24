@@ -1,0 +1,7 @@
+<apex:page controller="JSONParser1">
+  <apex:form >
+      <apex:pageBlock >
+          result: {!result}
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

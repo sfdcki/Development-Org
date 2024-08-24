@@ -1,0 +1,11 @@
+<apex:page controller="CustomPagination" tabStyle="Contact">
+    <apex:form >        <apex:pageBlock title="Contact Pagination " >                 <apex:pageBlockButtons >              <apex:commandButton value="<<" action="{!beginning}" disabled="{!DisablePrevious}"/>
+              <apex:commandButton value="<" action="{!previous}" disabled="{!DisablePrevious}"/>
+              <apex:commandButton value=">" action="{!next}" disabled="{!DisableNext}"/>
+              <apex:commandButton value=">>" action="{!last}" disabled="{!DisableNext}"/>            </apex:pageBlockButtons>             <apex:pageBlockTable value="{!ContactsToShow}" var="con">
+                <apex:column value="{!con.name}"/>                  
+                <apex:column headerValue="LeadSource">
+                    <apex:outputField value="{!con.Manager__c}"/>
+                </apex:column>                              </apex:pageBlockTable>                     </apex:pageBlock>
+    </apex:form>
+</apex:page>

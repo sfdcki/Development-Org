@@ -1,0 +1,20 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:stylesheet value="{!$Resource.style}"/>
+ <!--   <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" /> -->
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function(){
+        var text_len = 55;
+        j$("#event").html(text_len + 'characters remaining');
+    j$("#textarea").keyup(function(){
+    	var len_rem = text_len - j$("#textarea").val().length;
+        j$("#event").html(len_rem + 'characters remaining');
+    });
+});
+ </script>
+    <apex:form >
+        <textarea id="textarea" cols="40" rows="7" maxlength="55" />
+        <div id="event"></div>
+    </apex:form>
+</apex:page>

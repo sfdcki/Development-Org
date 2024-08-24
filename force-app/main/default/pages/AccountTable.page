@@ -1,0 +1,18 @@
+<apex:page setup="false" sidebar="false" showheader="true" controller="ObjectTable" action="{!Show}">
+<apex:sectionHeader title="Account" subtitle="Account Table"/>
+<apex:form >
+<apex:pageblock >
+    <apex:pageblockbuttons >
+    </apex:pageblockbuttons>
+    <apex:pageblocksection >
+        <apex:pageblocktable value="{!AccList}" var="Con">
+            <apex:column headerValue="AccountId">
+            <apex:outputLink value="/{!Con.id}">{!Con.Id}</apex:outputLink></apex:column>
+            <apex:column headerValue="Account Name" value="{!Con.Name}"/>
+            <apex:column headerValue="Annual Revenue" value="{!Con.AnnualRevenue}"/>
+            <apex:column headerValue="AccountNumber" value="{!Con.AccountNumber}"/>
+        </apex:pageblocktable>
+    </apex:pageblocksection>
+</apex:pageblock>
+</apex:form>
+</apex:page>

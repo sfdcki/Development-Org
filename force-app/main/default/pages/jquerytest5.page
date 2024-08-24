@@ -1,0 +1,25 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />    
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function() {
+    	var eml_dflt = "Enter E-mail Address";
+        j$("#eml").val(eml_dflt);
+        j$("#eml").focus(function(){
+        	if(j$(this).val() == eml_dflt)
+                {
+                    j$(this).val("");
+                    }
+        }).blur(function(){
+        	if(j$(this).val() == '')
+                {
+                    j$(this).val(eml_dflt);
+                    }
+        });
+    });
+ </script>
+    <apex:form >
+        <input type="text" id="inp" /><br/>
+        <input type="email" id="eml" />
+    </apex:form>
+</apex:page>

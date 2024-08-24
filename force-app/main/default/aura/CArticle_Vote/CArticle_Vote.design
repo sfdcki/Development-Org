@@ -1,0 +1,4 @@
+<design:component label="Article Version ID">
+	<design:attribute name="subject" default="10" />
+    <design:attribute name="URL" default="10" />
+</design:component>

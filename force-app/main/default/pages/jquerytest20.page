@@ -1,0 +1,34 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){
+            j$("#names, #places").sortable({connectWith:'#names, #places'});
+            });
+     </script>
+    <style>
+    	#names,#places {
+        	list-style: none;
+        	padding: 0px;
+        	color: #A1FCFB;  
+        }
+   </style>
+<apex:form id="form">
+   	<ul id="names">
+        <li>uday</li>
+        <li>kiran</li>
+        <li>a uday</li>
+        <li>a kiran</li>
+        <li>udayakiran</li>
+    </ul>
+    <ul id="places">
+        <li>uday</li>
+        <li>kiran</li>
+        <li>a uday</li>
+        <li>a kiran</li>
+        <li>udayakiran</li>
+    </ul>
+    </apex:form>
+</apex:page>

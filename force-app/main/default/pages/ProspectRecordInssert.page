@@ -1,0 +1,21 @@
+<apex:page standardController="Prospect__c" tabStyle="Prospect__c" setup="false" sidebar="false" showheader="true" extensions="ProspectExtension">
+    <chatter:feedWithFollowers entityId="{!Prospect__c.id}"/> <br/>
+  <!--  <apex:detail inlineEdit="true" title="true" relatedList="false" >
+        <apex:relatedList list="Lead"/>
+    </apex:detail>-->
+<apex:sectionHeader title="Prospect" subtitle="Prospect Record"/>
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockButtons location="bottom">
+            <apex:CommandButton value="Save" action="{!save}"/>
+            <apex:commandButton value="cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Enter Details" columns="2" collapsible="true">
+            <apex:inputField value="{!Prospect__c.name}" label="Name"/>
+            <apex:inputfield value="{!Prospect__c.AnnualRevenue__c}" label="Annual Revenue"/>
+            <apex:inputfield value="{!Prospect__c.Email__c}" label="Email"/>
+            <apex:inputfield value="{!Prospect__c.ProspectSource__c}" label="Source"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

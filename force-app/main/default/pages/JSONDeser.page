@@ -1,0 +1,6 @@
+<apex:page controller="JSONDeser" sidebar="false" action="{!show}">
+    <apex:pageblock >
+    	{!studentw}
+        {!stuObject}
+    </apex:pageblock>
+</apex:page>

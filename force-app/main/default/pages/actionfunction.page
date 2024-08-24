@@ -1,0 +1,30 @@
+<apex:page controller="faction" sidebar="false" docType="html-5.0" showHeader="false" setup="false" id="pa">
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script type="text/javascript">
+    	 j$=jQuery.noConflict();
+    	 j$(document).ready(function() {
+         	j$("#button").click(function(){
+            	alert("clicked");
+                var a = j$("#in").val();
+                var b = j$("#add").val();
+                alert(a);
+                alert(b);
+                nameas(a,b);
+                j$("#in").val('');
+                j$("#add").val('');
+                alert("name assigned");
+            });
+         });
+    </script>
+    <apex:form id="fo">
+        Enter name: <input type="text" id="in"/>
+        Enter Address: <input type="text" id="add"/>
+        <input type="button" value="Click!" id="button"/>
+        
+        <apex:actionFunction action="{!nameas}" name="nameas" immediate="true" reRender="para">
+          <apex:param name="name" value=""/> 
+            <apex:param name="add" value=""/> 
+        </apex:actionFunction>
+        "{!cust_id}"
+    </apex:form>
+</apex:page>

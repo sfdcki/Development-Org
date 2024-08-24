@@ -1,0 +1,12 @@
+<aura:component>
+    <aura:attribute name="txtFromEvent" type="String"/>
+    <div class="slds">
+        In the Parent Aura component: 
+        <p>
+            Data from Lightning Web component: {!v.txtFromEvent}
+        </p>
+        <c:lWCEventFire onselected="{!c.processEvent}"/>
+    </div>
+    
+
+</aura:component>

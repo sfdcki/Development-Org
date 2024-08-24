@@ -1,0 +1,3 @@
+<design:component label="hello">
+	<design:attribute name="subject" default="10" />
+</design:component>

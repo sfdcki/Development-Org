@@ -1,0 +1,20 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />    
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function() {j$('.table td:even').addClass('highlight');});
+ </script>
+    <style>
+        .table, .table tr, .table td { border: 2px solid #ff0000; width: 10%;}
+        .highlight {background-color: #f0f0f0;}
+    </style>
+    <apex:form >
+        <table class="table">
+            <tr><td>uday1</td></tr>
+            <tr><td>uday2</td></tr>
+            <tr><td>uday3</td></tr>
+            <tr><td>uday4</td></tr>
+            <tr><td>uday5</td></tr>
+        </table>
+    </apex:form>
+</apex:page>

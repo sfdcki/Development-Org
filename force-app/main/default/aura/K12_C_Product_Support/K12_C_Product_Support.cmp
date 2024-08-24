@@ -1,0 +1,371 @@
+<aura:component controller="K12_C_Product_Support" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   
+    <ltng:require scripts="/resource/jquery/lib/jquery-1.11.3.min.js" afterScriptsLoaded="{!c.loadscript}"/>
+ 
+    <aura:attribute type="String" name="product"/>
+    <aura:attribute type="String" name="role"/>
+    <aura:attribute type="String" name="issue"/>
+    <!-- fourth page summary fields -->
+    <aura:attribute type="String" name="CProduct"/>
+    <aura:attribute type="String" name="CRole"/>
+    <aura:attribute type="String" name="CName"/>
+    <aura:attribute type="String" name="CEmail"/>
+    <aura:attribute type="String" name="CDOnm"/>
+    <aura:attribute type="String" name="CAOI"/>
+    <aura:attribute type="String" name="CIsue"/>
+    <aura:attribute type="string" name="CPhone"/>
+    <aura:attribute type="string" name="Czip"/>
+    <aura:attribute type="string" name="Ccse"/>
+    <aura:attribute type="string" name="CaseId"/>
+    <!-- fourth page summary fields -->
+           <div class="slds-col slds-col--padded slds-p-top--large slds-align--absolute-center">
+       
+                                <fieldset class="slds-box slds-theme--default slds-container--small">
+            <div style="height:51px; background-color:#66CDAA;"><img src="/resource/pearsonlogo" alt="uploading" class="small-spinner" style="padding: 1px;width: 120px; height: 50px; " /></div>  <br/>         
+             <legend id="EscalationForm" class="slds-text-heading--small slds-p-vertical--medium slds-text-color--default"> K12 Curriculum Product Support </legend>
+            <form class="slds-form--stacked">
+                <label class="slds-form-element__label">Use this form to request help for our Curriculum products. </label><br/><br/>
+                <label class="slds-form-element__label">If you are requesting an Administrator account for our Curriculum Systems, then refer to the <a href="https://pearsonnacommunity.force.com/support/s/system-administrators" target="_blank">Administrator Account</a> area on Community Connection.</label>
+               
+                <label class="slds-form-element__label"><span style="color:#FF0000;">*</span> Required</label><br/>
+                <!-- .....................................first division.......................... -->
+                <div id="first" style="display:block;">
+                    <div class="slds-has-divider--top"></div><br/>
+                    <label class="slds-form-element__label">Page 1 of 4 - How Can We Help?</label>
+                    <div style="border: 1px solid #ddd; margin:2px 5px 2px 0 !important; padding:1px !important; width:98% !important; background:white; border-radius:8px">
+                            <div style="background-color:#64992C; height:16px; text-align:right; border-radius:8px; width:25%;">
+                                <span>25%</span>
+                            </div>
+                    </div><br/>
+                    <div class="slds-has-divider--top"></div><br/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label"><strong>Choose a product<span style="color:#FF0000;">*</span> : </strong></label>
+                                <div class="slds-form-element__control">
+                                <select  id="productSelected" class="topdropdown" onchange="{!c.validateProduct}">
+                                <option selected="selected" required="true" class="hideoption slds-text-color--default" value = "0">             </option>
+                                <aura:iteration items="{!v.product}" var="product">              
+                                    <option class="slds-text-color--default" value="{!product.Name}" text="{!product.Product_Name__c}"></option>
+                                </aura:iteration>
+                    </select>
+                                </div>
+                <div id="Perr" style="display:none;" class="slds-form-element__label">Please select a product</div>
+            </div><br/>
+            <div class="slds-form-element" style="display:none;" id="other">
+                <label class="slds-form-element__label"><strong>Other Product Details<span style="color:#FF0000;">*</span> : </strong></label>
+                                <div class="slds-form-element__control">
+                                <ui:inputText aura:id="Oprod"
+                                  maxlength="255"
+                                  required="true"
+                                  class="slds-input,width" />
+                </div><br/>
+                <div id="Oerr" style="display:none;" class="slds-form-element__label">This field is required. Please enter a value.</div>
+                <div class="slds-has-divider--top"></div><br/>
+                <h2 class="slds-form-element__control">Other Products</h2><br/>
+                                                                <label class="slds-form-element__label">If you did not see your product listed, please add the product name in the Issue Description area.</label>
+            </div><br/>
+           <div class="slds-form-element slds-is-required">
+                <label class="slds-form-element__label"><strong>Your Role<span style="color:#FF0000;">*</span> : </strong></label>
+                                <div class="slds-form-element__control">
+                                <select  id="roleSelected" class="topdropdown" onchange="{!c.supportaction}">
+                                <option selected="selected" required="true" class="hideoption slds-text-color--default" value = "0">             </option>
+                                <aura:iteration items="{!v.role}" var="role">              
+                                    <option class="slds-text-color--default" value="{!role.Name}" text="{!role.Role_Name__c}"></option>
+                                </aura:iteration>
+                    </select>
+                                </div>
+            <div id="Rerr" style="display:none;" class="slds-form-element__label">Please select a role</div>
+                </div>    <br/>
+                <div id="admin" style="display:none;">
+                <h2 class="slds-form-element__control">Administrator Account Setup</h2><br/>
+                                                                <label class="slds-form-element__label">Please visit the <a href="http://support.pearsonschool.com/index.cfm/support/administrator-requests/" target="_blank">Administrator Request</a> area on Community Connection to request School and District administrator accounts for Pearson SuccessNet, SuccessNet Plus, Realize or Dash.</label>
+             </div>
+             <div id="student" style="display:none;">
+                 <div class="slds-text-heading--small">Students</div>
+                 <label class="slds-form-element__label">All students must be 13 years or older to contact Pearson support.</label><br/><br/>
+                 <div class="slds-text-heading--small">Student Verification *</div>
+                 <input type="checkbox" name="age" value="yes"/><label class="slds-form-element__label"> I am over 13 years old</label><br/>
+             
+             </div>
+              <div id="pemp" style="display:none;">
+                  <div class="slds-text-heading--small">Are you...</div><br/>
+                 <input type="checkbox" name="age" value="self"/><label class="slds-form-element__label"> submitting for yourself</label><br/>
+                 <input type="checkbox" name="age" value="others"/><label class="slds-form-element__label"> submitting on behalf of a customer</label><br/>
+             
+             </div>
+                 <div class="slds-form-element">
+                                <ui:button label="continue" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.movesecond}"/>
+                </div> 
+                               
+                </div>
+            <!-- .....................................second division.......................... -->
+            <div id="second" style="display:none;">
+            <div class="slds-has-divider--top"></div><br/>
+                                <label class="slds-form-element__label">Page 2 of 4 - Contact Information</label>
+                    <div style="border: 1px solid #ddd; margin:2px 5px 2px 0 !important; padding:1px !important; width:98% !important; background:white; border-radius:8px">
+                            <div style="background-color:#64992C; height:16px; text-align:right; border-radius:8px; width:50%;">
+                                <span>50%</span>
+                            </div>
+                    </div><br/>
+            <div class="slds-has-divider--top"></div><br/>
+            <div class="slds-form-element ">
+                 <div class="slds-text-heading--small">Contact Information</div><br/>
+                    <label class="slds-form-element__label"><strong>Contact Name<span style="color:#FF0000;">*</span> : </strong></label>
+                    <div class="slds-form-element__control">
+                        <span><ui:inputText aura:id="FName" maxlength="255" required="true" class="slds-input,width" labelClass="rn_inputText" placeholder="First"/></span> 
+                        <span><ui:inputText aura:id="LName" maxlength="255" required="true" class="slds-input,width" labelClass="rn_inputText" placeholder="Last" /></span> 
+                    </div>
+                </div><br/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Contact Email<span style="color:#FF0000;">*</span> :</label>
+                <div class="slds-form-element__control">
+                    <ui:inputEmail aura:id="cemail"
+                                                                                class="slds-input"
+                                                                                required="true"/>
+                </div>
+            </div>    <br/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Contact Phone<span style="color:#FF0000;">*</span> :</label>
+                <div class="slds-form-element__control">
+                    <ui:inputPhone aura:id="cphone"
+                                                                                class="slds-input"
+                                                                                required="true"/>
+                </div>
+            </div>    <br/>
+                 <div class="slds-has-divider--top"></div><br/>
+            <div class="slds-text-heading--small">Institution Information</div><br/> 
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="pacc" label="Pearson Account Number :"
+                                                                                class="slds-input"
+                                                                                labelClass="slds-form-element__label"/>
+                </div>
+            </div>    <br/>
+             <div class="slds-form-element">
+                <label class="slds-form-element__label">District or Organization Name<span style="color:#FF0000;">*</span> :</label>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="doname"
+                                                                                class="slds-input"
+                                                                                required="true"/>
+                </div>
+            </div>    <br/>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                      <ui:inputText aura:id="sname" label="School Name :"
+                                                                                class="slds-input"
+                                                                                labelClass="slds-form-element__label"/>
+                </div>
+            </div>    <br/>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Zip Code<span style="color:#FF0000;">*</span> :</label>
+                <div class="slds-form-element__control">
+                      <ui:inputText aura:id="zcode"
+                                                                                class="slds-input"
+                                required="true"/>
+                </div>
+            </div>    <br/>
+                 <div class="slds-form-element">
+                                <ui:button label="continue" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.movethird}"/>
+                    <ui:button label="previous" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.movefirst}"/>
+                </div> 
+              </div> 
+                                                <!-- ...................................third division........................... -->
+            <div id="third" style="display:none;">
+            <div class="slds-has-divider--top"></div><br/>
+                                <label class="slds-form-element__label">Page 3 of 4 - Help Request Information.</label>
+                    <div style="border: 1px solid #ddd; margin:2px 5px 2px 0 !important; padding:1px !important; width:98% !important; background:white; border-radius:8px">
+                            <div style="background-color:#64992C; height:16px; text-align:right; border-radius:8px; width:75%;">
+                                <span>75%</span>
+                            </div>
+                    </div><br/>
+            <div class="slds-has-divider--top"></div><br/>
+            <div class="slds-text-heading--small">Help Request Information</div><br/>
+            <label class="slds-form-element__label">Fill out the information below. Include a screenshot, documentation or any other materials that might help us solve the issue or inquiry.</label>
+            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                      <ui:inputText aura:id="ecase" label="Existing Case Number"
+                                                                                class="slds-input"
+                                labelClass="slds-form-element__label"/>
+                    </div>
+            </div>    <br/>
+            <div class="slds-form-element">
+                                <label class="slds-form-element__label">Area of Issue<span style="color:#FF0000;">*</span> : </label>
+                                <div class="slds-form-element__control">
+                      <select  id="issueSelected" class="topdropdown">
+                                <option selected="selected" required="true" class="hideoption slds-text-color--default" value = "0">             </option>
+                                <aura:iteration items="{!v.issue}" var="issue">              
+                                    <option class="slds-text-color--default" value="{!issue.Name}" text="{!issue.Issue__c}"></option>
+                                </aura:iteration>
+                    </select>
+                    </div>
+                                <div id="Ierr" style="display:none;" class="slds-form-element__label">Please select Issue type</div>
+            </div>    <br/>
+         
+    
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                                <label class="slds-form-element__label">Issue Description<span style="color:#FF0000;">*</span> :</label>
+                                <div class="slds-form-element__control">
+                      <textarea rows="5" cols="45" id="idesc"></textarea>
+                    </div>
+                </div>
+                <div id="derr" style="display:none;" class="slds-form-element__label">Please provide issue description</div>
+            </div>    <br/> 
+                                
+                 
+                 <div class="slds-form-element">
+                    <label class="slds-form-element__label">Upload a File</label>
+                    <div class="slds-form-element__control">
+                                                <input type="file" class="file" aura:id="file" style="border: 1px solid #C7CACD;border-radius: 25px;"/>
+                  <!--      <ui:button label="Save" press="{!c.save}"/>
+                        <div aura:id="uploading" class="notUploading">
+                                                                <img src="/resource/loadinggray" alt="uploading" class="small-spinner" style="border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 70px; height: 50px; " /> Uploading...
+                                                                                </div> -->
+                    </div>
+                </div> <br/>
+                <div class="slds-has-divider--top"></div><br/>
+                <label class="slds-form-element__label slds-text-heading--small">To make sure we continue to offer the best service possible, your communication may be monitored for quality assurance.</label><br/><br/>
+               
+                 <div id="captchasection" class="slds-form-element">
+                     <label class="slds-form-element__label">Type the letters you see in the image below.</label><br/>
+                               <input type="textforcaptcha" id="Captcha" readonly="true"></input>
+                                <a id="refreshLink" onclick="{!c.refreshCaptcha}">Refresh</a><br />
+                                <input type="textforcaptcha" placeholder="Enter the Captcha as above" id="txtInput"/>   
+                   
+                </div>
+                <div id="cperr" style="display:none;" class="slds-form-element__label">Please enter valid captcha</div><br/>
+                <div class="slds-form-element">
+                                <ui:button label="continue" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.movefourth}"/>
+                    <ui:button label="previous" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.movesecond}"/>
+                </div> 
+                </div> 
+            <!-- ...................................fourth division........................... -->
+                <div id="fourth" style="display:none;">
+                    <div class="slds-has-divider--top"></div><br/>
+                    <label class="slds-form-element__label">Page 4 of 4</label>
+                    <div style="border: 1px solid #ddd; margin:2px 5px 2px 0 !important; padding:1px !important; width:98% !important; background:white; border-radius:8px">
+                            <div style="background-color:#64992C; height:16px; text-align:right; border-radius:8px; width:99%;">
+                                <span>99%</span>
+                            </div>
+                    </div><br/>
+                    <div class="slds-has-divider--top"></div><br/>
+                    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                        <tbody>
+                                <tr>
+                              <th>
+                                <label class="slds-form-element__label">Choose a Product</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CProduct}" class="slds-form-element__label"/>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th>
+                                <label class="slds-form-element__label">Your Role</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CRole}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                             <tr>
+                            <th>
+                                <label class="slds-form-element__label">Contact Name</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CName}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                             <tr>
+                            <th>
+                                <label class="slds-form-element__label">Contact Email</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CEmail}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                                  <tr>
+                            <th>
+                                <label class="slds-form-element__label">Contact Phone</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CPhone}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                                  <tr>
+                            <th>
+                                <label class="slds-form-element__label">District or Organization Name</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CDOnm}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                              <tr>
+                            <th>
+                                <label class="slds-form-element__label">Zip Code</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.Czip}" class="slds-form-element__label"/>
+                              </td>
+                       </tr>
+                             <tr>
+                            <th>
+                                <label class="slds-form-element__label">Existing Case Number</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.Ccse}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                            <tr>
+                            <th>
+                                <label class="slds-form-element__label">Area of Issue</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CAOI}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                             <tr>
+                            <th>
+                                <label class="slds-form-element__label">Issue Description</label>
+                              </th>
+                              <td>
+                                <ui:outputText value="{!v.CIsue}" class="slds-form-element__label"/>
+                              </td>
+                        </tr>
+                            </tbody>
+                        </table>
+              <!--      <div class="slds-form-element">
+                    <label class="slds-form-element__label">Upload a File</label>
+                    <div class="slds-form-element__control">
+                                                <input type="file" class="file" aura:id="file" id="file" style="border: 1px solid #C7CACD;border-radius: 25px;"/>
+                        <ui:button label="Save" press="{!c.save}"/>
+                        <div aura:id="uploading" class="notUploading">
+                                                                <img src="/resource/loadinggray" alt="uploading" class="small-spinner" style="border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 70px; height: 50px; " /> Uploading...
+                                                                                </div>
+                    </div>
+                                </div> <br/> -->
+                   
+                    
+                    <div class="slds-form-element" id="final">
+                                <ui:button label="Upload | Submit" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.casesave}"/>
+                    <ui:button label="previous" class="slds-button slds-button--brand"
+                               labelClass="slds-form-element__label"
+                               press="{!c.movethird}"/>
+                </div> 
+                </div>
+                                </form>
+                                </fieldset>
+       
+    </div>
+   
+    </aura:component>

@@ -1,0 +1,6 @@
+<apex:page controller="insertController">
+    <apex:form >
+        <apex:inputFile fileName="{!fname}" value="{!contentFile}"/>
+        <apex:commandButton value="UploadFile" action="{!ReadFile}"/>
+    </apex:form>
+</apex:page>

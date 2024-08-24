@@ -1,0 +1,9 @@
+<apex:page setup="false" sidebar="false" showheader="true" controller="TestSchedule">
+<apex:sectionHeader title="Cron" subtitle="Cron Trigger"/>
+<apex:form >
+    <apex:pageblock >
+        <apex:commandButton value="Click" action="{!show}"/>
+    </apex:pageblock>
+</apex:form>
+
+</apex:page>

@@ -1,0 +1,15 @@
+<apex:page sidebar="false" setup="false" showHeader="true" tabStyle="Lead" controller="SourcePageController" action="{!TargetPageController}">
+<apex:sectionHeader title="Target Page" subtitle="Page Navigation"/>
+<apex:form >
+    <apex:pageblock title="Target Page Block">
+        <apex:PAgeblockSection title="Target Page Section" columns="1" collapsible="false">
+
+            <apex:inputtext label="Customer Id is.....: " value="{!customerId}"/>
+            <apex:inputtext label="Customer Id is.....: " value="{!customerName}"/>
+            
+            <apex:commandButton value="Goto Source Page" action="{!GotoSourcePage}"/>
+        </apex:PAgeblockSection>
+
+    </apex:pageblock>
+</apex:form>
+</apex:page>

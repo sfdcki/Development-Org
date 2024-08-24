@@ -1,0 +1,19 @@
+<apex:page tabStyle="Account" docType="html-5.0" sidebar="false" setup="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />    
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function() {
+                    j$("#test").click(function() {alert('Welcome!');
+                                                 j$("#inp").val('welcome Uday');
+                                                 j$("#pra").hide();});
+        			
+ });
+ </script>
+    <apex:form >
+        <a id="test"><span>first test</span></a><br/>
+        <input type="text" id="inp" />
+        <p id="pra">
+            Hello first example Jquery!
+        </p>
+    </apex:form>
+</apex:page>

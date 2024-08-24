@@ -1,0 +1,17 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />    
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function() {
+        j$("#inpt").focusin(function(){alert('focusedin!');});
+        j$("#inpt").focusin(function(){j$(this).css('background-color','yellow');});
+        j$("#inpt").focusout(function(){j$(this).css('background-color','#FFF').css('color','#FA0');});
+        j$("input:button, p").click(function(){alert('clicked button/para');});
+});
+ </script>
+    <apex:form >
+        <input type="text" id="inpt" />
+        <input type="button" id="but" />
+        <p>Hello !</p>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="contactContro" >
+    <aura:attribute type="Contact[]" name="data"/>
+    <aura:attribute type="List" name="columns"/>
+
+    <aura:handler value="{!this}" name="init" action="{!c.init}"/>
+    <Lightning:dataTable data="{!v.data}"
+                         columns="{!v.columns}"
+                         keyField="id"
+                         hideCheckboxColumn="true"/>
+</aura:component>

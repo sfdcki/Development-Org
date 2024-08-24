@@ -1,0 +1,231 @@
+<apex:page sidebar="false" setup="false" showHeader="false" docType="html-5.0" controller="CustomerExtension" extensions="CustomerExtn" id="page">
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <apex:stylesheet value="{!URLFOR($Resource.SLDSVF, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+
+    <script type="text/javascript">
+        j$=jQuery.noConflict();
+        j$(document).ready(function(){
+            j$("#enr").click(function(){ j$("#div").dialog({modal:true,overlay:{opacity:10.0},show: 'slideDown',hide: 'slideUp'});  });
+            j$("#close").click(function(){
+                    j$("#errname").html('');
+                    j$("#erradd").html('');
+                    j$("#errema").html('');
+                    j$("#errage").html('');
+                    j$("#errinv").html('');
+                    j$("#errdte").html('');
+                    j$("#cna").val('');
+                    j$("#cad").val('');
+                    j$("#cem").val('');
+                    j$("#cag").val('');
+                    j$("#cin").val('');
+                    j$("#cda").val('');
+                    j$("#div").dialog('close');});
+            j$("#submit").click(function(){
+                    j$("#errname").html('');
+                    j$("#erradd").html('');
+                    j$("#errema").html('');
+                    j$("#errage").html('');
+                    j$("#errinv").html('');
+                    j$("#errdte").html('');
+                var funreturn = validate();
+                   // alert(funreturn);
+                if(funreturn == 1)
+                {
+                   // alert(funreturn);
+                    isrtCustomer(name,addr,emai,cage,invs,date);
+                    j$("#div").dialog('close');
+                    j$("#div1").dialog({buttons: {'OK':function(){j$("#div1").dialog('close');}},modal:true,overlay:{opacity:10.0}});
+                    }
+              });
+            j$("#sbut").click(function(){
+                    var name = j$("#Na").val();
+                    var rol = 'uday';
+                    var len = name.length;
+            if(len == 0)
+                {
+                    alert("Please enter the name");
+                    j$("#Na").focus();
+                    return;
+                    }
+             Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CustomerExtension.getCust}',name,rol,function(result,event){
+                if(event.status){ 
+                    var strResult = "<table border=2 width=20><tr><th>Name</th><th>Expected Date</th><th>Adress</th><th>Age</th><th>Investment</th><th>Customer Number</th><th>Email</th></tr>";
+                    if(result.length == 0)
+                        {
+                            j$("#oput").text("No records identified for search criteria");
+                            j$("#Na").val('');
+               }
+       else{
+       for(var i=0; i<result.length; i++)
+           {
+               strResult += "<tr><td>"+result[i].Name+"</td><td>"+result[i].Comm_Date__c+"</td><td>"+result[i].Customer_Address__c+"</td><td>"+result[i].Customer_Age__c+"</td><td>"+result[i].Customer_Investment__c+"</td><td>"+result[i].number__c+"</td><td>"+result[i].E_Mail__c+"</td></tr>";
+               }
+       strResult += "</table>";
+       j$("#oput").html(strResult);
+       j$("#Na").val('');}
+       return false;
+   } else if(event.type == 'exception')
+       {document.getElementById("responseErrors").innerHTML = event.message + event.where;}
+       else
+           {document.getElementById("responseErrors").innerHTML = event.message;}
+   },{escape: true});   
+            });
+        });
+        function validate()
+        {
+                name = j$("#cna").val();
+                addr = j$("#cad").val();
+                emai = j$("#cem").val();
+                cage = j$("#cag").val();
+                invs = j$("#cin").val();
+                date = j$("#cda").val();
+                if(name == '')
+                {
+                    j$("#errname").html('Name is mandatory field');
+                    return 0;
+                }
+                if(addr == '')
+                {
+                    j$("#erradd").html('Address is mandatory field');
+                    return 0;
+                }
+                if(emai == '')
+                {
+                    j$("#errema").html('Email is mandatory field');
+                    return 0;
+                }
+                if(cage == '')
+                {
+                    j$("#errage").html('Age is mandatory field');
+                    return 0;
+                }
+                if(invs == '')
+                {
+                    j$("#errinv").html('Invstment is mandatory field');
+                    return 0;
+                }
+                if(date == '')
+                {
+                    j$("#errdte").html('Date is mandatory field');
+                    return 0;
+                }
+                return 1;               
+        };
+</script>
+    <style>
+        #search {
+            width: 54%;
+            height: 300px;
+            padding: 20px;
+            background-color: #FAF012;
+            float: left;
+            overflow-y: scroll;
+            border-radius: 20px;
+        }
+        #enroll {
+            width: 40%;
+            height: 200px;
+            padding: 20px;
+            background-color: #FA00FA;
+            float: right;
+            border-radius: 20px;
+        }
+        #image {
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+            height: 20%;
+        }
+        #image1 {
+            display: block;
+            width: 75%;
+            height: 35%;
+            border-radius: 10px;
+        }
+        #console {
+            background-color: #FAFAFA;
+            width: 100%;
+            height: 700px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15px;
+        }
+        #div, #div1 {
+            autoOpen: false;
+            background-color: #92a1b0;
+            display: none;
+            padding: 5px;
+            color: #FFF;
+            border-radius: 15px;
+        }
+        #user {
+            width: 20%;
+            height: 70px;
+            background-color: #FB1234;
+            float: right;
+            padding: 5px;
+            border-radius: 20px;
+        }
+        #foot {
+            float: left;
+        }
+        
+    </style>
+    
+    <apex:form id="form">
+                <apex:actionFunction name="isrtCustomer" action="{!isrtCustomer}" immediate="true" rerender="" status="myStatus" reRender="div1">
+                    <apex:param name="name" value=""/>
+                    <apex:param name="adds" value=""/>
+                    <apex:param name="emal" value=""/>
+                    <apex:param name="cage" value=""/>
+                    <apex:param name="invt" value=""/>
+                    <apex:param name="date" value=""/>
+                </apex:actionFunction>
+    <div id="console" class="tcs">
+        
+        <div id="div1" title="Data saved!" class="tcs">
+            Your ID is: {!cust_id}
+            Thank you for your interest! Our sales team contact you soon.
+        </div>
+        <div style="width:100%;"><img id="image" src="{!$Resource.customerlogo}"/></div>
+        <div>
+            <div id="search" renderAs="pdf">
+                Airtel heartly welcomes you!<br/>
+                <span>Enter the search criteria</span>
+                    <input type="text" placeholder="Enter CUSTOMER Name" id="Na"/>
+                    
+                <input type="button" value="Search" id="sbut" class="tcs"/><br/>
+                <span> Search Results:</span><br/>
+                <div id="oput"></div>
+            </div>
+            <div id="enroll">
+                <input type="button" value="Enroll" id="enr" class="tcs"/>
+            </div>
+        </div>
+        <div id="user" class="tcs">
+            <table><tr><td><img id="image1" src="{!$Resource.userlogo}"/></td><td>{!username}</td></tr></table>
+        </div>
+        <div id="foot">
+            <footer>
+                <p>Posted by: Airtel Corporation @</p>
+                <p>Contact information: <a href="#">someone@airtel.com</a>.</p>
+            </footer>
+        </div>
+    </div>
+    <div id="div" title="Share your interest with us!" class="tcs">
+            <table>
+                
+                <tr><th>Name:</th><td><input type="text" id="cna"/><div id="errname"></div></td></tr>
+                <tr><th>Address</th><td><input type="text" id="cad"/><div id="erradd"></div></td></tr>
+                <tr><th>Email:</th><td><input type="email" id="cem"/><div id="errema"></div></td></tr>
+                <tr><th>Age:</th><td><input type="number" id="cag"/><div id="errage"></div></td></tr>
+                <tr><th>Investment:</th><td><input type="number" id="cin"/><div id="errinv"></div></td></tr>
+                <tr><th>Date:</th><td><input type="date" id="cda"/><div id="errdte"></div></td></tr>
+
+                <tr><th><input type="submit" value="submit" id="submit" class="tcs"/></th><td><input type="button" value="Cancel" id="close" class="tcs"/></td></tr>
+            </table>
+        </div>
+        </apex:form>
+    <div id="responseErrors"></div>
+</apex:page>

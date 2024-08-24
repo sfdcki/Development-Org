@@ -1,0 +1,21 @@
+<aura:component >
+    <aura:attribute name="messages" type="List" description="list of strings" default="['welcome to lightning','lightning is more complex','lightning is future!']"/>
+    <p><c:helloMessage message="{!v.messages[0]}"/></p>
+    <c:helloMessage message="{!v.messages[1]}"/>
+    <c:helloMessage message="{!v.messages[2]}"/>
+    
+    <h2> now iteration aura</h2>
+    <aura:iteration items="{!v.messages}" var="msg">
+        <p><c:helloMessage message="{!msg}"/></p>	
+    </aura:iteration>
+    
+    
+    <h2>Now conditional statement</h2>
+    <aura:if isTrue="{!$Browser.isIPhone}">
+    
+        <p><c:helloMessage message="{!v.messages[0]}"/></p>
+        <aura:set attribute="else">
+            <p><c:helloMessage message="{!v.messages[1]}"/></p>
+        </aura:set>
+    </aura:if>
+</aura:component>

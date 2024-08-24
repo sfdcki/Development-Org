@@ -1,0 +1,35 @@
+<apex:page sidebar="false" setup="false" showHeader="false"> 
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){ 
+            j$("#sup").click(function() {
+            	j$("#msg").slideUp();
+            });
+        });        
+     </script>
+    <style>
+    	#msg {
+        	margin-top: 0px;
+        	margin-left: auto;
+        	margin-right: auto;
+        	background-color: #FAF0F0;
+        	width: 700px;
+        	color: #000;
+        	padding: 20px;
+        	text-align: center;
+        }
+        .bold {
+        	font-weight: bold;
+        	list-style: circle;
+        }
+    
+    </style>
+<apex:form id="form">
+	<div id="msg">
+        we see you are not logged in. want to <a href="#">signup!</a><br/>
+        <a href="#" id="sup">No Thanks!</a>
+    </div>
+        
+    </apex:form>
+</apex:page>

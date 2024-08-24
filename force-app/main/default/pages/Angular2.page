@@ -1,0 +1,24 @@
+<apex:page >
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" /> 
+    <script>
+    function cntlname($scope)
+    {
+    	$scope.fname = "Udaya Kiran";
+        $scope.lname = "Athmakuri";
+        $scope.fullname = function()
+        {
+        	var cnlname = $scope.fname+' '+$scope.lname;
+            alert(cnlname);
+        }
+    }
+    var myapp = angular.module("myapp",[]);
+    myapp.controller("Fcontroller",cntlname);
+    </script>
+    <div ng-app="myapp">
+        <div ng-controller="Fcontroller">
+            <p>First Name: <input type="text" ng-model="fname"/></p>
+            <p>First Name: <input type="text" ng-model="lname"/></p>
+            <input ng-click="fullname()" type="button" id="inputname" value="Submit"/> 
+        </div>
+    </div>
+</apex:page>

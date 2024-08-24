@@ -1,0 +1,13 @@
+<apex:page controller="SFServerAuthentication">
+    <apex:form >
+        <apex:pageBlock title="SF to SF webserver code">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Get Code" action="{!getMyCode}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="Enter client Id" value="{!clientId}"/>
+                <apex:inputText label="Enter callback URL" value="{!callbackurl}"/>
+                </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

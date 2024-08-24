@@ -1,0 +1,27 @@
+<apex:page >
+   <!-- <apex:includeScript value="{!URLFOR($Resource.AngularJS, 'angular.min.js')}" />-->
+    
+       <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" /> 
+    <script>
+    	function cntlname($scope,$rootScope)
+    {	
+        $rootScope.gvar = 1;
+        $scope.Name = "";
+        $scope.Submit = function()
+        {
+        	alert("Hello angular world!");
+        }
+    }
+    var myapp = angular.module("myapp",[]);
+    myapp.controller("cntlname1",cntlname);
+    </script>
+    <div ng-app="myapp">
+        {{gvar}}
+        <div ng-controller="cntlname1">
+        		<input ng-model="Name" type="input" id="inputname"/>     
+           		<input ng-click="Submit()" type="button" id="inputname" value="Submit"/>  
+            {{Name}}
+        </div>
+    </div>
+    
+</apex:page>

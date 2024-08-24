@@ -1,0 +1,20 @@
+<apex:page setup="false" sidebar="false" showheader="true" controller="DepList">
+<apex:sectionHeader title="List" subtitle="DependentList"/>
+<apex:form >
+    <apex:pageblock >
+        <apex:pageblockButtons >
+            <apex:commandButton value="Select" action="{!CityPlace}" reRender="DPL"/>
+        </apex:pageblockButtons>
+        <apex:pageblockSection title="Select value in list" collapsible="true">
+        
+            <apex:selectList label="Place Details" multiselect="false" size="1" value="{!selectedCity}">
+                <apex:selectoptions value="{!lstCity}"></apex:selectoptions>
+            </apex:selectList> 
+            
+            <apex:selectlist label="Dependent List" multiselect="false" size="1" id="DPL">
+                <apex:selectoptions value="{!lstPlace}"></apex:selectoptions>
+            </apex:selectlist>
+        </apex:pageblockSection>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

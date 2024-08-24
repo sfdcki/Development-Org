@@ -1,0 +1,29 @@
+<apex:page >
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" /> 
+    <script>
+    function cntlname($scope)
+    {
+    	$scope.student = {
+        fname:"Athmakuri",
+        lname:"Udaya Kiran",
+        fullname:function()
+        {
+            var cnlname = $scope.student;
+        	return cnlname.fname +" "+cnlname.lname;
+        }
+            };
+    }
+    var myapp = angular.module("myapp",[]);
+    myapp.controller("Fcontroller",cntlname);
+    </script>
+    <div ng-app="myapp">
+        <div ng-controller="Fcontroller" ng-init="snames=[{name:'abc',age:10},{name:'xyz',age:11},{name:'123',age:12}]">
+            <p>First Name: <input type="text" ng-model="student.fname"/></p>
+            <p>First Name: <input type="text" ng-model="student.lname"/></p>
+            Full Name: {{student.fullname()}}
+            <ol>
+            	<li ng-repeat="name in snames">{{'name:' + name.name+',age:'+name.age}}</li>
+            </ol>
+        </div>
+    </div>
+</apex:page>

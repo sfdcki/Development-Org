@@ -1,0 +1,40 @@
+<apex:page sidebar="false" setup="false" tabstyle="Account" controller="AccountList" showHeader="false">
+    <apex:form >
+              <apex:pageBlock title="Select Account">
+                  <apex:pageblockButtons location="bottom">
+                      <apex:commandButton value="Account Names" reRender="ID"/>
+                  </apex:pageblockButtons>
+                  <apex:pageblockSection title="Select Account" collapsible="true" columns="2">
+                      <apex:selectList multiselect="false" size="1" label="Account Name" value="{!selectedAccountID}">
+                          <apex:selectoptions value="{!LstOption}"></apex:selectoptions>
+                      </apex:selectList>
+                  </apex:pageblockSection>
+              </apex:pageBlock>
+          </apex:form>
+          
+  <apex:tabPanel switchType="ajax" id="ID">
+      <apex:tab label="Account Details" Name="Account Details">
+          <chatter:feedWithFollowers entityId="{!selectedAccountID}"/>
+          <apex:detail inlineEdit="true" relatedList="false" title="true" subject="{!selectedAccountID}"/>
+      </apex:tab>
+      
+      <apex:tab label="Contact Reacords" name="Contact Records">
+          <apex:relatedList subject="{!selectedAccountID}" list="Contacts"/>
+      </apex:tab>
+      
+      <apex:tab label="Opportunities" name="Opportunities">
+          <apex:relatedList subject="{!selectedAccountID}" list="Opportunities"/>
+      </apex:tab>
+      
+      <apex:tab label="Cases" name="Cases">
+          <apex:relatedList subject="{!selectedAccountID}" list="Cases"/>
+      </apex:tab>
+         <apex:tab label="Account Team" name="Account Team">
+          <apex:relatedList subject="{!selectedAccountID}" list="AccountTeamMembers"/>
+      </apex:tab>
+         <apex:tab label="Approval Process" name="Approval Process">
+          <apex:relatedList subject="{!selectedAccountID}" list="ProcessSteps"/>
+      </apex:tab>
+      
+  </apex:tabPanel>
+</apex:page>

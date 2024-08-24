@@ -1,0 +1,27 @@
+<apex:page setup="false" sidebar="false" showheader="true" tabStyle="Case" controller="SampleTest" action="{!getAllRecords}">
+<apex:sectionHeader title="Wrapper" subtitle="New Wrapper"/>
+<apex:form >
+    <apex:pageBlock title="Wrapper Data">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Select All" action="{!selectAll}"/>
+            <apex:Commandbutton value="Delete" action="{!deleteAll}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection >
+            <apex:pageblockTable value="{!CWrapper}" var="wr">
+                <apex:column headerValue="Selected?">
+                    <apex:inputcheckbox value="{!wr.IsSelected}"/>
+                </apex:column>
+                <apex:column headervalue="RecordID" value="{!wr.RecordId}"/>
+                <apex:column headerValue="Name" value="{!wr.Name}"/>
+                <apex:column headerValue="Email" value="{!wr.Email}"/>
+                <apex:column headervalue="Phone" value="{!wr.phone}"/>
+                <apex:column headervalue="FaxNumber" value="{!wr.faxnumber}"/>
+            </apex:pageblockTable>
+            <apex:outputLink value="https://www.salesforce.com" id="theLink">www.salesforce.com</apex:outputLink>
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+</apex:form>
+ 
+</apex:page>

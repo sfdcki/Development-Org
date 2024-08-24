@@ -1,0 +1,23 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:stylesheet value="{!$Resource.style}"/>
+ <!--   <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" /> -->
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function(){
+        alert('Hello');
+    j$("#click_me").click(function(){j$("#click_event").toggle();});
+    j$("#audio").hover(function(){j$("#event").html('selected audio');});   
+    j$("#video").hover(function(){j$("#event").html('selected video');});
+    j$("#mix").hover(function(){j$("#event").html('selected mix');});
+});
+ </script>
+    <apex:form >
+        <div id="click_event" style="float: left;">hi</div>
+        <a href="#" id="click_me" style="float: left;">Click Me!</a><br/>
+        <a href="#" id="audio">Audio</a>/
+        <a href="#" id="video">Video</a>/
+        <a href="#" id="mix">Mix</a>
+        <div id="event"></div>
+    </apex:form>
+</apex:page>

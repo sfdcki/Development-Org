@@ -1,0 +1,15 @@
+<apex:page sidebar="false" controller="JSONExample1" action="{!show}">
+        <apex:pageBlock >
+            name: 	{!stringValue}<br/>
+            pretty name: {!stringValue1}<br/>
+            date: {!dateValue}<br/>
+            datepretty: {!dateValue1}<br/>
+            {!sobjectValue}
+            {!acc1.name}
+            {!acc1.industry}
+            {!acc2}
+            {!arrayresult}<br/>
+            {!arrObject}
+            {!arrswrap}
+            </apex:pageBlock>
+</apex:page>

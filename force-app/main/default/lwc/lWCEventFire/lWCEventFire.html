@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Greet" icon-name="custom:custom14">
+
+        <div class="slds-m-around_medium">
+            <p>
+                hello, {greeting}
+            </p>
+            <lightning-input label="Enter Name" value={greeting} onchange={changeHandler}></lightning-input>
+
+        </div>
+    </lightning-card>
+</template>

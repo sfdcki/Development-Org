@@ -1,0 +1,28 @@
+<aura:component controller="Article_Vote" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,force:hasSObjectName" access="global" >
+        <ltng:require scripts="/resource/jquery/lib/jquery-1.11.3.min.js"/>
+    	<aura:attribute name="subject" type="string"/>
+    <aura:attribute type="String" name="article"/>
+    <button class="slds-button slds-buttonicon-border slds-m-right--large" aria-live="assertive" title="Like" style="background-color:red;">
+                    <c:svgIcon class="slds-input__icon slds-icon-text-default" svgPath="/resource/SLDSNEW/assets/icons/utility-sprite/svg/symbols.svg#like" 
+                                        size="small" name="like" category="utility"/>
+                </button>
+    <button class="slds-button slds-buttonicon-border" aria-live="assertive" title="disLike">
+                    <c:svgIcon class="slds-input__icon slds-icon-text-default" svgPath="/resource/SLDSNEW/assets/icons/utility-sprite/svg/symbols.svg#dislike" 
+                               size="small" name="dislike" category="utility"/></button>
+	<div class="slds-grid slds-wrap slds-grid--pull-padded">
+          <div class="slds-p-horizontal--small slds-size--1-of-1 slds-form-element__label slds-text-heading--small">Was this article helpful?</div>
+        <div class="slds-p-horizontal--small slds-size--1-of-1">
+            <input type="radio" name="vote" id="Y" value="Yes"/> <label class="slds-form-element__label">Yes</label>
+            <input type="radio" name="vote" id="N" value="No"/> <label class="slds-form-element__label">No</label>       
+        <div class="slds-p-horizontal--small slds-size--1-of-1">
+            <label class="slds-form-element__label">Comments</label><br/>
+                      				<textarea rows="5" cols="45" id="articleComments" value="{!recordId}"></textarea>
+                </div>
+            </div>
+    <div class="slds-p-horizontal--small slds-size--1-of-1">
+    	<ui:button label="Submit" class="slds-button slds-button--neutral"
+                               labelClass="slds-form-element__label" 
+                               press="{!c.createVote}"/></div>
+    </div>
+  
+</aura:component>

@@ -1,0 +1,16 @@
+<apex:page standardController="Position__c" sidebar="false" setup="false" tabStyle="Position__c" >
+    <br/>
+    <chatter:feedWithFollowers entityId="{!Position__c.id}"/> <br/>
+    <apex:detail inlineEdit="true" title="true" relatedList="false" >
+        <apex:relatedList list="Candidates__r"/>
+        <apex:relatedList list="OpenActivities"/>
+        <apex:relatedList list="CombinedAttachments"/>
+    </apex:detail>
+    <apex:sectionHeader title="Related List" subtitle="RelatedList New"/>
+    <apex:pageBlock title="Related Lists">
+        <apex:pageblockButtons >
+            
+        </apex:pageblockButtons>
+    </apex:pageBlock>
+  
+</apex:page>

@@ -1,0 +1,28 @@
+<apex:page controller="HttpExample3">
+    <apex:form >
+        <apex:pageBlock title="HTTP3">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Get Access Token" action="{!getToken}" reRender="Tok"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="Enter client Id" value="{!clientId}"/>
+                <apex:inputText label="Enter secret key" value="{!clientsecret}"/>
+                <apex:inputText label="Enter login Id" value="{!userName}"/>
+                <apex:inputText label="Enter Password" value="{!password}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="AccessToken" id="Tok">
+                    {!accessToken}
+                </apex:pageBlockSection>
+                <apex:pageblock title="Result">
+                    <apex:pageblockButtons location="bottom">
+                        <apex:commandbutton value="Get Data!" action="{!getData}"/>
+                    </apex:pageblockButtons>
+                    <apex:pageBlockSection >
+                        <apex:pageblocktable value="{!names}" var="a">
+                            <apex:column value="{!a}"/>
+                        </apex:pageblocktable>
+                    </apex:pageBlockSection>
+                </apex:pageblock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,30 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:stylesheet value="{!$Resource.style}"/>
+ <!--   <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" /> -->
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function(){
+    	j$("#but").click(function(){
+        	j$(this).attr('value','Please wait!');
+            j$(this).attr('disabled',true);
+        });
+		   j$(":text").focusin(function(){
+        	j$(this).css('background-color', 'yellow');
+        });
+        j$(":text").blur(function(){
+        	j$(this).css('background-color', '#f0f0f0');
+        });
+    });
+ </script>
+    <apex:form >
+        <p>
+            Enter Name: <br/><input type="text" id="name" />
+        </p>
+         <p>
+            Enter Password: <br/><input type="text" id="pwd" />
+        </p>  
+         <p><input type="button" id="but" value="SignUp"/>
+        </p>  
+    </apex:form>
+</apex:page>

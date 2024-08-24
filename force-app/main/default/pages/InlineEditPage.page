@@ -1,0 +1,48 @@
+<apex:page controller="inlineEditController" id="thePage" action="{!getPositions}"> 
+    <apex:form id="theForm"> 
+        <apex:pageBlock id="thePageBlock"> 
+            <apex:pageBlockTable value="{!posList}" var="record" id="thePageBlockTable"> 
+                <apex:column >
+                    <apex:outputField value="{!record.Name}" id="AccountNameDOM" /> 
+                    <apex:facet name="header">Name</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Closing_Date__c}" id="ClosingDate" /> 
+                    <apex:facet name="header">Type</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Description__c}" 
+                        id="Description" />  
+                        <apex:facet name="header">Industry</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Hiring_Position__c}" 
+                        id="HManager" />  
+                        <apex:facet name="header">Hiring Manager</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Location__c}" 
+                        id="Location" />  
+                        <apex:facet name="header">Industry</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Manager_Printed_Name__c}" 
+                        id="ManagerPrintedName" />  
+                        <apex:facet name="header">Industry</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Number_of_Candidates__c}" 
+                        id="NoOfCandidates" />  
+                        <apex:facet name="header">Industry</apex:facet>
+                </apex:column>
+                <apex:inlineEditSupport event="ondblClick" 
+                        showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" /> 
+            </apex:pageBlockTable> 
+            <apex:pageBlockButtons > 
+               <apex:commandButton value="Edit" action="{!savingCustomerRecord}" id="editButton" />
+                <apex:commandButton value="Save" action="{!savingCustomerRecord}" id="saveButton" />
+                <apex:commandButton value="Cancel" action="{!savingCustomerRecord}" id="cancelButton" />
+            </apex:pageBlockButtons> 
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

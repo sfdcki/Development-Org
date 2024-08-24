@@ -1,0 +1,21 @@
+<apex:page sidebar="false" setup="false" tabstyle="Position__c" standardController="Account" >
+
+  <apex:tabPanel switchType="ajax" >
+      <apex:tab label="Account Details" Name="Account Details">
+          <apex:detail inlineEdit="false" relatedList="false" title="true" subject="{!Account.id}"/>
+      </apex:tab>
+      
+      <apex:tab label="Contact Reacords" name="Contact Records">
+          <apex:relatedList list="Contacts"/>
+      </apex:tab>
+      
+      <apex:tab label="Opportunities" name="Opportunities">
+          <apex:relatedList list="Opportunities"/>
+      </apex:tab>
+      
+      <apex:tab label="Cases" name="Cases">
+          <apex:relatedList list="Cases"/>
+      </apex:tab>
+      
+  </apex:tabPanel>
+</apex:page>

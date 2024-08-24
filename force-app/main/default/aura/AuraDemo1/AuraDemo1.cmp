@@ -1,0 +1,6 @@
+<aura:component>    
+    <aura:attribute name="message" type="String" default="default value" />
+
+    <c:demo2 onentertext="{!c.handleEvent}" />
+   {!v.message}
+</aura:component>

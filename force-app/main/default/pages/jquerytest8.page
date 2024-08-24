@@ -1,0 +1,34 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:stylesheet value="{!$Resource.style}"/>
+ <!--   <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" /> -->
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function(){
+    	j$("#menu_list").dblclick(function(){
+            var current = j$("#menu").css('display');
+			if(current == 'none')
+                {
+        	j$("#menu").show();
+                    }else if(current == 'block'){
+            			j$("#menu").hide();}
+        });
+		   
+    });
+ </script>
+    <apex:form >
+        <a href="#" id="menu_list" style="float: right;">Menu</a><br/>
+        <p>
+            Hello! welcome to Jquery!
+        </p><br/>
+        <div id="menu" style="display: none;float: right;">
+            <a href="#">workflow</a><br/>
+            <a href="#">processbuilder</a><br/>
+            <a href="#">assignment rule</a><br/>
+            <a href="#">trigger</a>
+        </div>
+        <p>
+            Hello! welcome to Jquery!
+        </p><br/>
+    </apex:form>
+</apex:page>

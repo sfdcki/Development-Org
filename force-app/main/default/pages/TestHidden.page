@@ -1,0 +1,32 @@
+<apex:page id="p1" >
+  
+  
+  <script type="text/javascript">
+  
+  document.write("Show Hide Functionality");
+  
+  function Hide(){
+  document.getElementById("t1").style.visibility="hidden";
+  document.getElementById("p1:f1:b1").style.visibility="hidden";
+  document.getElementById("p1:f1:b2").style.visibility="visible";
+  }
+  function Show(){
+  document.getElementById("t1").style.visibility="visible";
+  document.getElementById("p1:f1:b2").style.visibility="hidden";
+  document.getElementById("p1:f1:b1").style.visibility="visible";
+  }
+  </script>
+ 
+ <apex:form id="f1">
+  <apex:commandButton value="Hide" onclick="Hide()" rerender="t1" id="b1"/>
+  <apex:commandButton value="Show" onclick="Show()" rerender="t1" id="b2"/>
+  <table id="t1" border="true">
+  <tr> Name 
+  <td> kamal </td>
+  <td> Basha </td>
+  </tr>
+  </table>
+  
+  </apex:form>
+  
+</apex:page>

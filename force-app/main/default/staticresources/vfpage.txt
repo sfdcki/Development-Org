@@ -1,0 +1,508 @@
+<apex:page showHeader="false" sidebar="false" controller="career_opportunities_AC" title="Claims Adjuster Jobs | TheBestIRS" applyHtmlTag="false">
+<!-- <link REL="SHORTCUT ICON" HREF="{!URLFOR($Resource.fav_icon)}" type="image/x-icon" > </link>-->
+<link rel="shortcut icon" type="image/x-icon" href="https://thebestirs.secure.force.com/careeropportunities/resource/1471516974000/favicon" /> 
+
+
+    <apex:form id="formid">
+    <style>
+     #mapContainermap {
+        width:100%!important;
+        height:100%!important;
+        }
+       .spinner-bar{
+       display:none;
+       } 
+    
+      
+    </Style>
+   
+    <Script type="text/javascript">
+    function statecall()
+       {
+           alert('hi');
+           alljobspage();
+       }
+    function Reference(id1)
+       {
+           var r = document.getElementById('{!$Component.formid.selectlistid}').value;
+           var s = document.getElementById("enteredid").value;
+           refer123(r,s);
+           return true;
+       }
+    </Script> 
+    <apex:actionFunction name="refer123" action="{!alljobspage}" reRender="formid">
+        <apex:param value="" name="stateid" assignTo="{!statevalue}"/>
+        <apex:param value="" name="Enterid" assignTo="{!Entervalue}"/>
+    </apex:actionfunction>
+      <Html>
+           <head>
+                
+                <apex:includeScript value="{!URLFOR($Resource.map22, '/jquery.min.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.map22, '/svg.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.map22, '/rgbcolor.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.map22, '/canvg.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.map22, '/statmapsvg.min.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.map22, '/demo.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.career_opportunities, 'career_opportunities/scripts/doubletaptogo.js')}"/>
+                <script>
+    $( function()
+    {
+        $( '#nav li:has(ul)' ).doubleTapToGo();
+    });
+</script>
+                
+                <apex:stylesheet value="{!URLFOR($Resource.map22, '/statmapsvg.css')}"/>
+                <apex:stylesheet value="{!URLFOR($Resource.map22, '/style.css')}"/>
+                
+                <apex:stylesheet value="{!URLFOR($Resource.career_opportunities, 'career_opportunities/css/default.css')}"/>
+                <apex:stylesheet value="{!URLFOR($Resource.career_opportunities, 'career_opportunities/css/responsive.css')}"/>
+                <apex:stylesheet value="{!URLFOR($Resource.career_opportunities, 'career_opportunities/css/tpl.css')}"/>
+                <apex:stylesheet value="{!URLFOR($Resource.font)}"/>
+                
+                                
+                <script type="text/javascript">
+                    $(function(){   
+                        window.addEventListener('SVGLoad', function() { 
+                            myMap=$('#map');
+                            myMap.statMapSVG({
+                                map:{
+                                    svgFile:"{!$Resource.map_svg}",
+                                    title: 'Demo 04 - Add Mouse Click Event To An Area - Please Click On The Green Area, Not At The Legend',
+                                    width: '90%',
+                                    height:'325',
+                                    showTooltip: true,
+                                    selectedFill: '#366ca3',
+                                    hoverFill: '#366ca3',
+                                    color:"red" ,
+                                    zoomButtons: {
+                                        show: true,
+                                        orientation: 'v',
+                                        location: 'tl'
+                                    }
+                                },
+                                legend:{
+                                    
+                                    showValue: true,                // Show Column Value
+                                    areaLabel: "Area",              // Label of Column Area
+                                    valueLabel: "Click Action"      // Label of Column Value
+                                                
+                                },
+                               
+                            });
+                            myMap.statMapSVG.generate();
+                        }, false);
+                    });
+                </script>
+                
+             <!--   <script>
+                      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){            
+                      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),            
+                      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)            
+                      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                     <!-- ga('create', 'UA-9336845-1', 'auto');
+                      ga('create', 'UA-9336845-1', 'auto', {'allowLinker': true });
+                      ga('require', 'linker');
+                      ga('linker:autoLink', ['thebestirs.com', 'thebestirs.secure.force.com']);
+                      ga('send', 'pageview');
+                </script>-->
+                <script>
+    
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) 
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');  
+  
+    //ga('create', 'UA-9336845-1', 'auto');  
+    ga('create', 'UA-9336845-1', 'auto', {'allowLinker': true });
+    ga('require', 'linker');   
+    ga('linker:autoLink', ['thebestirs.com', 'thebestirs.secure.force.com'], false, true);   
+    ga('send', 'pageview');
+      </script>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+                <meta name="keywords" content="" />
+                <meta name="description" content="Whether you're searching for a temporary, temp-to-hire or direct hire claims job, TheBestIRS recruits for all of them." />
+                <meta name="p:domain_verify" content="a782753ee045535741027d0cc2f82ae1"/> 
+                
+              
+                 <script type="text/javascript">
+jQuery(document).ready(function($) {
+  
+    $("#nav").click(function() {
+        $("#mmenu").slideToggle(500);
+    });
+});
+</script>
+            </head>
+            
+            <body>
+    <div id="wrapper">
+        <div id="container">
+                    <div id="header">
+                        <div id="header-left">
+                            <span id="cms-24" class="tpl_edit"><a href="http://www.thebestirs.com">
+                            <apex:image url="{!URLFOR($Resource.career_opportunities,'career_opportunities/images/print_ready_logo__v2.jpg')}" width="400" height="108"/>
+                            </a><br /></span>
+                        </div>
+                        <div id="header-right">
+                            <div id="social-media-links">
+                                <div id="cms-18" class="tpl_edit">  
+                                                    
+                                    <div class="social-media-buble" id="smb-gplus">
+                                        <script type="text/javascript" src="https://apis.google.com/js/plusone.js" gapi_processed="true"></script>
+                                        <script type="text/javascript">
+                                            document.write('<g:plusone href="http://www.thebestirs.com/" width="50" height="60" size="tall" annotation="bubble"></g:plusone>');
+                                        </script>
+                                        </div>
+                                    
+                                    <div class="social-media-buble" id="smb-facebook">
+                                        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FTheBestIRS&send=false&layout=box_count&width=50&show_faces=false&font&colorscheme=light&action=like&height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:62px;" allowTransparency="true"></iframe>
+                                    </div>
+                                    
+                                    <div class="social-media-buble" id="smb-linkedin">
+                                        <script src="//platform.linkedin.com/in.js" type="text/javascript">
+                                        lang: en_US
+                                        </script>
+                                        <script type="IN/FollowCompany" data-id="1066228" data-counter="top"></script>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <div id="search">
+                                <!--<form action="/career-opportunities" method="get">
+                                    <input type="hidden" name="act" value="search" />-->
+                                    
+                                    <span class="input" style="float: left;">
+                                        <input type="text" id="enteredid" name="Keywords" placeholder="Job Search" onclick="this.value='';"/>
+                                    </span> 
+                                    
+                                     <apex:outputPanel > 
+                                        <apex:selectList value="{!StateType}" id="selectlistid" multiselect="false" size="1" style="float:left; border:1px solid #B7B7B7; border-left:none; border-right:none; padding:0 3px; margin:0; background:#FAFAFA; height:24px; font-size:12px; color:#999999; outline:none;"> 
+                                            <apex:selectOptions value="{!StateList}"/> 
+                                            <!--<apex:actionSupport event="onchange" action="{!alljobspage}" />-->
+                                        </apex:selectList>
+                                        <!--<apex:commandButton id="search-btn" action="{!alljobspage}" style="bgcolor:white;background-image:url({!URLFOR($Resource.career_opportunities,'career_opportunities/images/search-btn.gif')});background-repeat:no-repeat;cursor:pointer;"/>-->
+                                    </apex:outputPanel>
+                                    
+                                    <input name="" type="image"  src="{!URLFOR($Resource.career_opportunities,'career_opportunities/images/search-btn.gif')}"  id="search-btn" onclick="Reference();">
+                                        <apex:actionSupport action="{!alljobspage}" onsubmit="Reference();" reRender="formid"/>
+                                    </input>
+                                    <!--<apex:commandButton id="search-btn" action="{!alljobspage}" style="bgcolor:white;background-image:url({!URLFOR($Resource.career_opportunities,'career_opportunities/images/search-btn.gif')});background-repeat:no-repeat;cursor:pointer;width:30px;" onclick="Reference();"/>-->
+                                    
+                                    
+                                    <!--<apex:image url="{!URLFOR($Resource.career_opportunities,'career_opportunities/images/search-btn.gif')}" id="search-btn"/>
+                                </form>-->
+                            </div>
+                            
+                            <div id="career-profile">
+                                <div class="inner-border">
+                                <div id="career-profile-header">
+                                    <span id="cms-2" class="tpl_edit"><a href="https://thebestirs.secure.force.com/careerprofile" target="_blank">Personal Career Profile</a></span>
+                                </div>
+                                
+                                <div id="career-profile-sub-header">
+                                    <span id="cms-3" class="tpl_edit">Receive Customized Job Alerts in your inbox!</span>
+                                </div>
+                                
+                                <div id="career-profile-content">
+                                    <span id="cms-4" class="tpl_edit">Insurance Job Alerts are tailored to your preferences and qualifications.</span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                        <div class="clear"></div>
+                    </div> <!-- end: header -->
+            
+                    <div id="main-nav">
+                        <nav id="nav" role="navigation">
+            <a href="#nav" title="Show navigation">Show navigation</a>
+    <a href="#" title="Hide navigation">Hide navigation</a>
+                        <ul>
+                            
+                             <!--START[MAIN_MENU]-->
+                            <li class="inactive" id="main-menu-item-0"><a id="page-label-1" href="http://www.thebestirs.com/Home" class="tpl_edit">Home</a></li>
+                            <li class="inactive" id="main-menu-item-1"><a id="page-label-2" href="http://www.thebestirs.com/job-seekers" class="tpl_edit">Job Seekers</a><span class='nav_pages_more'></span>
+                                <ul>
+                                    <li id="sub-menu-available-jobs"  class="dropnav_first"><a href="https://thebestirs.secure.force.com/careeropportunities" class="tpl_edit">Available Jobs </a></li>
+                                    <li id="sub-menu-cat-adjusters" ><a href="http://www.thebestirs.com/cat-adjusters" class="tpl_edit">Catastrophe Adjusters </a></li>
+                                    <li id="sub-menu-career-help-center" ><a href="http://www.thebestirs.com/work-with-an-irs-recruiter" class="tpl_edit">Career Help Center </a></li>
+                                    <li id="sub-menu-licensing-information" ><a href="http://www.thebestirs.com/licensing" class="tpl_edit">Licensing Information </a></li>
+                                    <li id="sub-menu-personal-career-profile"  class="dropnav_last"><a href="https://thebestirs.secure.force.com/careerprofile" class="tpl_edit" target="_blank">Personal Career Profile </a></li>
+                                </ul>
+                            </li>
+                            <li class="inactive" id="main-menu-item-2"><a id="page-label-5" href="http://www.thebestirs.com/employers" class="tpl_edit">Employers</a><span class='nav_pages_more'></span>
+                                <ul>
+                                    <li id="sub-menu-cat-adjusters"  class="dropnav_first"><a href="http://www.thebestirs.com/cat-adjusters" class="tpl_edit">Catastrophe Adjusters </a></li>
+                                    <li id="sub-menu-employer-contact"  class="dropnav_last"><a href="https://thebestirs.secure.force.com/employercontact" class="tpl_edit">Employer Contact </a></li>
+                                </ul>
+                            </li>
+                            <li class="active" id="main-menu-item-3"><a id="page-label-10" href="https://thebestirs.secure.force.com/careeropportunities" class="tpl_edit">Career Opportunities</a><span class='nav_pages_more'></span>
+                                <ul>
+                                    <li id="sub-menu-hot-jobs"  class="dropnav_first"><a href="https://thebestirs.secure.force.com/hotjobs" class="tpl_edit">Hot Jobs </a></li>
+                                </ul>
+                            </li>
+                            <li class="inactive" id="main-menu-item-4"><a id="page-label-11" href="http://www.thebestirs.com/company" class="tpl_edit">Company</a><span class='nav_pages_more'></span>
+                                <ul>
+                                    <li id="sub-menu-events"  class="dropnav_first"><a href="https://thebestirs.secure.force.com/events" class="tpl_edit">Events </a></li>
+                                    <li id="sub-menu-frequently-asked-questions" ><a href="http://www.thebestirs.com/frequently-asked-questions" class="tpl_edit">Frequently Asked Questions </a></li>
+                                    <li id="sub-menu-testimonials"  class="dropnav_last"><a href="https://thebestirs.secure.force.com/testimonials/" class="tpl_edit">Testimonials </a></li>
+                                </ul>
+                            </li>
+                            <li class="inactive" id="main-menu-item-5"><a id="page-label-18" href="http://www.thebestirs.com/new-hire" class="tpl_edit">New Hire</a><span class='nav_pages_more'></span>
+                                <ul>
+                                    <li id="sub-menu-health-benefits"  class="dropnav_first"><a href="http://www.thebestirs.com/health-benefits" class="tpl_edit">Health Benefits </a></li>
+                                    <li id="sub-menu-safety"  class="dropnav_last"><a href="https://thebestirs.secure.force.com/safety" class="tpl_edit">Safety </a></li>
+                                </ul>
+                            </li>
+                            <li class="inactive" id="main-menu-item-6"><a id="page-label-19" href="http://blog.thebestirs.com/" class="tpl_edit" target="_blank">Blog</a></li>
+                            <li class="inactive" id="main-menu-item-7"><a id="page-label-20" href="https://thebestirs.secure.force.com/contactus" class="tpl_edit">Contact Us</a></li>
+                            <!--END[MAIN_MENU]-->
+        
+                        </ul>
+                        </nav>
+                    </div> <!-- end: main-nav -->
+                
+                <div id="content-area">
+                    <div id="secondary-candidate-entry-module">
+                        <div id="secondary-candidate-entry-heading">
+                            <span id="cms-5" class="tpl_edit"><a style="color: #ffffff" href="http://www.thebestirs.com/job-seekers">Job Seekers:</a></span>
+                        </div>
+                        
+                        <div id="secondary-candidate-entry-content">
+                            <span id="cms-6" class="tpl_edit">TheBestIRS is the only insurance job placement service of its kind. Our insurance recruiters emphasis is on confidential and personalized service.</span>
+                        </div>
+                        
+                        <div id="secondary-candidate-entry-link">
+                            <span id="cms-7" class="tpl_edit"><a href="https://thebestirs.secure.force.com/careeropportunities" class="t-arrow">Search for Jobs</a></span>
+                        </div>
+                    </div>
+                    
+                    <div id="secondary-employer-entry-module">
+                        <div id="secondary-employer-entry-heading">
+                            <span id="cms-8" class="tpl_edit"><a href="http://www.thebestirs.com/employers" style="color: #ffffff">Employers:</a></span>
+                        </div>
+                        
+                        <div id="secondary-employer-entry-content">
+                            <span id="cms-9" class="tpl_edit">We are able to assist with all of your temporary, temp-to-hire, or direct hire insurance staffing needs, in all 50 states. Call us today 866-658-4477</span>
+                        </div>
+                        
+                        <div id="secondary-employer-entry-link">
+                            <span id="cms-10" class="tpl_edit"><a href="http://www.thebestirs.com/employers" class="t-arrow">Learn More</a><a href="https://thebestirs.secure.force.com/employercontact" class="t-arrow apply-arrow">Place Order</a></span>
+                        </div>
+                    </div>
+                    
+                    <div class="clear"></div>
+        
+                        <div id="sub-nav">
+                            <div id="cms-20" class="tpl_edit">
+                                <div>
+                                    <a href="https://thebestirs.secure.force.com/careerprofile" target="_blank">Start receiving Insurance Job Alerts today! Dont forget to add TheBestIRS.com to your address book.</a>
+                                    <a href="/licensing"></a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div id="secondary-content-wrapper">
+                            <div id="secondary-content">
+                                <!--TEMPLATE[REPORT]-->
+                                
+                                <!-- START CONTENT -->
+                                <h1><span id="page-heading-10" class="tpl_edit">We are hiring for our Temporary, Temp to Hire and Direct Hire Insurance Jobs!</span></h1>
+                                
+                                <div id="page-content-10" class="tpl_edit">Check out and apply to our newest claims jobs. If you don&rsquo;t see an opportunity in your desired location, sign up for TheBestIRS <a href="https://thebestirs.secure.force.com/careerprofile">Insurance Job Alerts.</a> These alerts will notify you of an insurance job that matches your skills and location preferences via email. Don&rsquo;t forget to view our <a href="https://thebestirs.secure.force.com/hotjobs">Hot Claims Jobs</a>!<br />
+                                <br />
+                                <br />
+                                    <script type="text/javascript">
+                                      /* <![CDATA[ */
+                                      document.write (
+                                        '<img src="http://www.irs.thebestirs.com/acton/bn/4929/visitor.gif?ts='+
+                                        new Date().getTime()+
+                                        '&ref='+escape(document.referrer) + '">'
+                                      );
+                                      var aoAccountId = '4929';
+                                      var aoCookieMode = 'STANDARD';
+                                      var aoCookieDomain = 'thebestirs.com';
+                                      var aoServerContext = 'http://www.irs.thebestirs.com/acton';
+                                      /* ]]> */
+                                    </script>
+                                </div>
+                                <script type="text/javascript" src="/jquery.balloon.min.js"></script> 
+                                <script type="text/javascript"> $(function() { $(".info").balloon(); }); </script>
+                                <div style="float:left; width:105px;"><a id="rssinfo" href="/career-opportunities/rss" title="Subscribe to the IRS Job Board RSS Feed and be notified every time a new job posts!">
+                                <apex:image url="{!URLFOR($Resource.career_opportunities,'career_opportunities/images/icon_rss.png')}" />RSS Feed</a> 
+                                <apex:image url="{!URLFOR($Resource.career_opportunities,'career_opportunities/images/question_mark.gif')}" styleClass="info" title="Subscribe to the IRS Job Board RSS Feed <br />and be notified every time a new job posts!"/></div>
+                                    <div id="filterControls">
+                                    <!-- <form action="#top" method="get"> 
+                                <input name="act" type="hidden" value="search" /> 
+                                <select style="padding:1px;" name="state" onchange="window.location.href='?act=search&q=&type=&state='+this.options[this.selectedIndex].value;"> 
+                                
+                                </select> --> 
+                                <apex:outputPanel > 
+                                    <apex:selectList value="{!StateType}" multiselect="false" size="1"> 
+                                    <apex:selectOptions value="{!StateList}"/> 
+                                    <apex:actionSupport event="onchange" action="{!Keywordsearch}"/> 
+                                    </apex:selectList> 
+                                </apex:outputPanel>&nbsp; 
+                                <apex:outputPanel > 
+                                    <apex:selectList value="{!AllType}" multiselect="false" size="1"> 
+                                    <apex:selectOptions value="{!TypeList}" /> 
+                                    <apex:actionSupport event="onchange" action="{!Keywordsearch}"/> 
+                                </apex:selectList> 
+                                </apex:outputPanel>&nbsp; 
+                                <!--<select style="padding:1px;" name="type" onchange="window.location.href='?act=search&q=&state=&type='+this.options[this.selectedIndex].value;"> 
+                                
+                                </select> --> 
+                                <apex:OutputPanel > 
+                                <apex:inputText value="{!Keywords}" onclick="this.value='';" html-placeholder="Keywords"/> 
+                                </apex:OutputPanel> 
+                                 <apex:OutputPanel >
+                                <apex:commandButton value="Search" action="{!Keywordsearch}"/>
+                                 </apex:OutputPanel>  
+                                <!-- </form> --> 
+                                </div><!-- start Fla-shop.com HTML5 Map -->
+                                <br />
+                                <br />
+                                <apex:outputPanel rendered="{!MapPage}">
+                                <!------ SVG Map ---------------->
+                                
+                               <div id = "map" align="center" style="margin-top:20px;"></div>
+                                
+                                <!-- ************** Jobs Table ****************-->
+                                <!-- Scripts and Styles Begins-->  <!--To get the styles for table including pagination --> 
+                                <apex:stylesheet value="{!URLFOR($Resource.jQueryDataTables, 'css/jquery.dataTables.css')}"/>
+                                <style type="text/css">
+                                .sorting {
+                                    background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_both.png') }') no-repeat center right !important;
+                                    padding-right: 20px !important;
+                                }
+                                .sorting_asc {
+                                    background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_asc.png') }') no-repeat center right !important;
+                                    padding-right: 20px !important;
+                                }
+                                .sorting_desc {
+                                    background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_desc.png') }') no-repeat center right !important;
+                                    padding-right: 20px !important;
+                                }
+                                .sorting_asc_disabled {
+                                    background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_asc_disabled.png') }') no-repeat center right !important;
+                                    padding-right: 20px !important;
+                                }
+                                .sorting_desc_disabled {
+                                    background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_desc_disabled.png') }') no-repeat center right !important;
+                                    padding-right: 20px !important;
+                                }
+                                table.dataTable tr.odd { background-color: white; }
+                                table.dataTable tr.even { background-color: white; }
+                                table.dataTable tr.odd td.sorting_1 { background-color: white; }
+                                table.dataTable tr.odd td.sorting_2 { background-color: white; }
+                                table.dataTable tr.odd td.sorting_3 { background-color: white; }
+                                table.dataTable tr.even td.sorting_1 { background-color: white; }
+                                table.dataTable tr.even td.sorting_2 { background-color: white; }
+                                table.dataTable tr.even td.sorting_3 { background-color: white; }
+                                .dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_paginate {
+                                    padding: 3px;
+                                }
+                                
+                                </style>
+                                <div>
+                                
+                            
+                                <apex:pageBlock >
+                                    <apex:pageBlockSection >
+                                        <apex:outputPanel style="border:none !important;">
+                                            <apex:pageBlockTable value="{!jobs_list}" var="j" styleClass="dataTable">
+                                                <apex:column headerValue="All Open Positions" style="border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-color: lightgrey !important;">
+                                                     <!--<apex:commandlink value="{!j.Name}" action="{!pageDetialView}" target="_blank"/>-->
+                                                    <apex:outputLink value="/apex/career_opportunities_Apply_VF?id={!j.id}&Jobtitle={!j.Job_Alert_Position__c}" id="theLink"><font color="blue">{!j.Job_Alert_Position__c}</font></apex:outputLink>
+                                                </apex:column>
+                                                <apex:column headerValue="City" style="border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-color: lightgrey !important;">
+                                                    <apex:outputField value="{!j.City__c}"/>
+                                                </apex:column>
+                                                <apex:column headerValue="State" style="border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-color: lightgrey !important;">
+                                                    <apex:outputField value="{!j.State__c}"/>
+                                                </apex:column>
+                                                <apex:column headerValue="Compensation" style="border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-color: lightgrey !important;">
+                                                    <apex:outputField value="{!j.Job_Order_Pay_Rate__c}"/>
+                                                </apex:column>
+                                                <apex:column headerValue="Assignment Type" style="border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-color: lightgrey !important;">
+                                                    <apex:outputField value="{!j.Job_Order_Placement_Type__c}"/>
+                                                </apex:column>
+                                               <!-- <apex:column headerValue="Opened Date" style="border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-color: lightgrey !important;">
+                                                    <apex:outputField value="{!j.CloseDate}"/>
+                                                </apex:column> -->
+                                            </apex:pageBlockTable>                                                                                        
+                                            
+                                            <script type="text/javascript" language="javascript" src="{!URLFOR($Resource.jQueryDataTables, 'js/jquery.js')}"></script>
+                                            <script type="text/javascript" language="javascript" src="{!URLFOR($Resource.jQueryDataTables, 'js/jquery.dataTables.js')}"></script>
+                                            <script type="text/javascript" language="javascript">                                                
+                                                var j$ = jQuery.noConflict();
+                                                j$('table.dataTable').dataTable({
+                                                    sPaginationType: "full_numbers",              
+                                                    "order": [[ 0, "desc" ]],
+                                                    "bInfo":false, 
+                                                    "scrollx":false, 
+                                                    
+                                                    "scrollCollapse": true,   
+                                                    "sDom": 'l<"toolbar">frtip',         
+                                                    "paging": true,
+                                                    'iDisplayLength': 100
+                                                }); 
+                                                
+                                                
+                                                <!--j$("div.toolbar").html('<b>SCRIPT RESPONSES</b>');-->                                          
+                                            </script>
+                                          <style>
+                                                .dataTables_scrollBody
+                                                {
+                                                    overflow-x: hidden!important;
+                                                    border-bottom:none!important;
+                                                }
+                                                .dataTables_scrollBody table{
+                                              
+                                                width: 100% !important;    
+                          
+                                                }
+                                                .dataTables_scrollHeadInner{
+                                                padding-right:5px!important;
+                                                }
+                                                .dataCol{
+                                                width:100%!important;
+                                                }
+                                                .empty{
+                                                display:none;
+                                                }
+                                            </style>
+                                        </apex:outputPanel>
+                                    </apex:pageBlockSection>  
+                                </apex:pageBlock>      
+                                </div>
+                                </apex:outputPanel>           
+                                            
+                    <!-- end HTML5 Map --><br /><br />
+                                <!-- END CONTE
+                            </div>   NT -->
+                            </div>   
+                            
+                            <div id="secondary-content-bottom">
+                            </div>   
+                        </div>
+                    </div><!-- end: content-area -->
+                    
+            <div id="footer">
+                <span id="settings-7" class="tpl_edit">Copyright &copy;2011 by TheBestIRS, a division of Dawg, Inc.;.  All rights  reserved.  | <a href="http://www.thebestirs.com/site-map">Site Map</a> <!--| <a href="http://www.thebestirs.com/terms-and-conditions">Terms and Conditions</a>&nbsp;--></span>   <span class="line">|</span> <span id="settings-49" class="tpl_edit"></span>
+            </div><!-- end: footer -->
+        </div><!-- end: container -->
+    </div><!-- end: wrapper -->
+
+    <script type="text/javascript">addOnKeyDown();</script>
+    
+ <apex:includeScript value="{!URLFOR($Resource.career_opportunities, 'career_opportunities/scripts/doubletaptogo.js')}"/>
+
+
+    </body>
+   </Html>
+ </apex:form>
+</apex:page>

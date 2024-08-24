@@ -1,0 +1,102 @@
+<aura:component controller="customLookUpController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="records" type="Object[]"/>
+    <aura:attribute name="rows" type="Integer"/>
+    <aura:attribute name="visible" type="Boolean" default="false"/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    
+    <lightning:card title="Add/Delete Rows Dynamically">
+        <aura:set attribute="actions">
+            <a onclick="{!c.add}">
+                <lightning:icon iconName="utility:add" alternativeText="add"/>
+            </a>
+        </aura:set>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <lightning:layout>
+                        <lightning:layoutItem  flexibility="auto, no-grow">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Sno">S.No</div>
+                            </th>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="2" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Name">H Name</div>
+                            </th>
+                        </lightning:layoutItem> 
+                        <lightning:layoutItem size="2" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Position Name">Position Name</div>
+                            </th>
+                        </lightning:layoutItem> 
+                        <lightning:layoutItem size="1" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="States">States</div>
+                            </th>
+                        </lightning:layoutItem>
+                         <lightning:layoutItem size="1" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Status">Status</div>
+                            </th>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="1" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="TestMulti">TestMulti</div>
+                            </th>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="1" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Opening Date">Opening Date</div>
+                            </th>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="2" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Closing Date">Closing Date</div>
+                            </th>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="1" >
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Description">Description</div>
+                            </th>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </tr>
+            </thead>
+        </table>
+        <aura:iteration items="{!v.records}" var="rec" indexVar="index">
+            
+            <lightning:layout>
+
+                <lightning:layoutItem  padding="around-small" flexibility="auto, no-grow">
+                    <div class="slds-text-heading_small slds-text-align_center">{!index + 1}.</div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="11" padding="around-small">
+                <c:CustomLookupComponent position="{!rec}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="1" padding="around-small">
+                    <a name="{!index}" onclick="{!c.remove}">
+                        <lightning:icon iconName="utility:delete" alternativeText="delete"/>
+                    </a>
+                    
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:iteration>
+       
+        <div class="slds-grid slds-grid_reverse">
+            <div class="slds-col slds-size_4-of-12 ">
+                <aura:if isTrue="{!v.visible}">
+                    <div class="slds-p-top_small">
+                        Saved {!v.rows} records...
+                    </div>
+                </aura:if>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+             <lightning:button label="Save" onclick="{!c.save}" variant="brand"/>
+            </div>
+        </div>
+        
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,123 @@
+<apex:page controller="ArtVotSummary" showHeader="false" sidebar="false">
+    <style>
+        .configurationButton
+        {
+            background:white;
+            color:gray;
+            cursor:default;
+            opacity:0.2;
+        }
+        .popup
+         {
+            background-color: white;
+            border-width: 2px;
+            border-style: solid #b2d2f5;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            width: 350px;
+            margin-left: -250px;
+            top:80px;
+         }
+         .popupBg
+         {
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 70);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+         }
+    </style>
+     
+        <!-- Scripts and Styles Begins-->    
+        <apex:stylesheet value="{!URLFOR($Resource.jQueryDataTables, 'css/jquery.dataTables.css')}"/>
+        <style type="text/css">
+        .sorting {
+            background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_both.png') }') no-repeat center right !important;
+            padding-right: 20px !important;
+        }
+        .sorting_asc {
+            background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_asc.png') }') no-repeat center right !important;
+            padding-right: 20px !important;
+        }
+        .sorting_desc {
+            background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_desc.png') }') no-repeat center right !important;
+            padding-right: 20px !important;
+        }
+        .sorting_asc_disabled {
+            background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_asc_disabled.png') }') no-repeat center right !important;
+            padding-right: 20px !important;
+        }
+        .sorting_desc_disabled {
+            background: #f2f3f3 url('{! URLFOR($Resource.jQueryDataTables, 'images/sort_desc_disabled.png') }') no-repeat center right !important;
+            padding-right: 20px !important;
+        }
+        table.dataTable tr.odd { background-color: white; }
+        table.dataTable tr.even { background-color: white; }
+        table.dataTable tr.odd td.sorting_1 { background-color: white; }
+        table.dataTable tr.odd td.sorting_2 { background-color: white; }
+        table.dataTable tr.odd td.sorting_3 { background-color: white; }
+        table.dataTable tr.even td.sorting_1 { background-color: white; }
+        table.dataTable tr.even td.sorting_2 { background-color: white; }
+        table.dataTable tr.even td.sorting_3 { background-color: white; }
+        .dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_paginate {
+            padding: 3px;
+        }
+    </style>
+   
+<apex:form id="formid">
+    <apex:messages styleClass="errorMsg" style="font-family:georgia,garamond,serif;" />
+    <apex:pageBlock title="Check Assignment" id="block">
+        <apex:pageBlockTable value="{!articleVotes}" var="il" styleClass="dataTable" id="table" >
+            <apex:column headerValue="Action">
+                <apex:commandButton value="Edit" action="{!URLFor($Action.Article_Votes__c.Edit,il.Id)}"/> 
+         		<!--<apex:commandButton value="Delete" action="{!URLFor($Action.Article_Votes__c.Delete,il.Id)}"/> -->
+
+                <apex:commandButton value="Del" action="{!delVote}" rerender="block">
+   					<apex:param name="vid" value="{!il.Id}" assignTo="{!votId}"/>
+				</apex:commandButton>
+            </apex:column>
+            <apex:column headerValue="Account Name">
+                <apex:outputText >{!il.Name}</apex:outputText>
+            </apex:column>
+            <apex:column headerValue="Feedback">
+                <apex:outputText >{!il.Feedback__c}</apex:outputText>
+            </apex:column>
+            <apex:column headerValue="Vote">
+                <apex:outputText >{!il.Vote__c}</apex:outputText>
+            </apex:column>
+      
+        </apex:pageBlockTable>
+        <script type="text/javascript" language="javascript" src="{!URLFOR($Resource.jQueryDataTables, 'js/jquery.js')}"></script>
+            <script type="text/javascript" language="javascript" src="{!URLFOR($Resource.jQueryDataTables, 'js/jquery.dataTables.js')}"></script>
+            <script type="text/javascript" language="javascript">
+                var j$ = jQuery.noConflict();
+                j$('table.dataTable').dataTable({
+                    sPaginationType: "full_numbers",
+                    "order": [[ 3, "desc" ]],
+                     "bFilter" : true,
+                     "scrollY":"600px",
+                    "scrollCollapse": true,          
+                    "paging": true,
+                    'iDisplayLength': 25
+                });
+            </script>
+            <style>
+                .dataTables_scrollBody
+                {
+                    overflow-x: hidden!important;
+                }
+                .dataTables_wrapper
+                {
+                    width: 98%!important;
+                }
+            </style>
+
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

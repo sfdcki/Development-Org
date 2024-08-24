@@ -1,0 +1,108 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){
+            j$("#date").datepicker({ dateFormat: 'dd/mm/yy', minDate: '0', maxDate: '3', showButtonPanel: true});
+            j$("#content").accordion({ collapsible: true, icons: { 'header': 'ui-icon-plus', 'headerSelected': 'ui-icon-minus' }, fillSpace: true});
+            j$("#save").click(function(){
+                						
+                                        j$("#div").dialog({modal:true,overlay:{opacity:10.0}});  });
+            j$("#close").click(function(){
+                j$("#div").dialog('close');});
+            j$("#submit").click(function(){
+                j$("#div").dialog('close');
+                j$("#div1").dialog({buttons: {'OK':function(){j$("#div1").dialog('close');}},modal:true,overlay:{opacity:10.0}});});
+            j$(".sp").draggable({containment: 'document',revert: true});
+            j$("#ddiv1,#ddiv2,#ddiv3").droppable({drop: Drop})
+            function Drop(event, ui) {
+                	 console.log( event.target.id );
+                	 var a=j$(ui.draggable).text();
+               			j$(this).text(a);
+					}
+            
+            });
+     </script>
+    <style>
+    	#ddiv1,#ddiv2,#ddiv3 {
+        	width: 70px;
+        	height: 20px;
+        	background-color: #EAEAEA;
+        	color: #000;  
+        	border-radius: 10px;
+        	padding: 2px;
+        }
+        #Main {
+        	width: 50%;
+        }
+        #div, #div1 {
+        	autoOpen: false;
+        	background-color: #92a1b0;
+        	display: none;
+        	padding: 5px;
+        	color: #FFF;
+        	border-radius: 10px;
+        	z-index: -20;
+  
+        }
+        #submit, #close {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#7e8082), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #7e8082, #65a9d7);
+   background: -moz-linear-gradient(top, #7e8082, #65a9d7);
+   background: -ms-linear-gradient(top, #7e8082, #65a9d7);
+   background: -o-linear-gradient(top, #7e8082, #65a9d7);
+   padding: 5px 5px;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 10px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: left;
+   }
+   </style>
+<apex:form id="form">
+    <span class="sp">athmakuri</span>/
+    <span class="sp">udaya</span>/
+    <span class="sp">kiran</span>
+    <div id="ddiv1"></div>
+    <div id="ddiv2"></div>
+    <div id="ddiv3"></div>
+    <div id="Main">
+        <div id="content">
+            <h3><a href="#"> About me!</a></h3>
+            <div>My personal infor</div>
+            <h3><a href="#"> About me!</a></h3>
+            <div>My personal infor</div>
+            <h3><a href="#"> Show your interest!</a></h3>
+            <div>Please click on below button to share data.<br /> click---->
+             <input type="button" id="save" value="Save"/>
+    <span id="drag"> Please click save if you want to enroll!!</span>
+    <div id="div" title="Share your interest with us!">
+    <table>
+        <tr><th>Name:</th><td><input type="text" id="name"/></td></tr>
+        <tr><th>City:</th><td><input type="text" id="city"/></td></tr>
+    	<tr><th>Email:</th><td><input type="email" id="email"/></td></tr>
+      <!--  <tr><th>Date</th><td><apex:input type="date"></apex:input></td></tr> -->
+        <tr><th>Date</th><td><input type="date" id="date" size="5"/></td></tr>
+    	<tr><th><input type="button" value="Submit" id="submit"/></th><td><input type="button" value="Cancel" id="close"/></td></tr>
+    </table>
+    </div>
+    <div id="div1" title="Data saved!">
+        Thank you for your interest! Our sales team contact you soon.
+    </div>
+            </div>
+        </div>
+    </div>
+   
+    </apex:form>
+</apex:page>

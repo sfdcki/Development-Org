@@ -1,0 +1,24 @@
+<apex:page controller="AccountsController" >
+      <apex:form >
+        <apex:pageBlock id="pgBlock" >
+            <apex:pageBlockTable value="{!AccountRecords}" var="acc">
+                <apex:column value="{!acc.name}"/>
+                <apex:column value="{!acc.Industry}"/>
+                <apex:column value="{!acc.Rating}"/>
+                <apex:column value="{!acc.Type}"/>
+                <apex:column value="{!acc.Annualrevenue}"/>
+                <apex:column value="{!acc.Active__c}"/>
+            </apex:pageBlockTable>
+           
+            <apex:commandLink rendered="{!setCon.hasPrevious}" value="First" action="{!setCon.first}" rerender="pgBlock" /> &nbsp;&nbsp;
+            <apex:commandLink rendered="{!setCon.hasPrevious}" value="Previous" action="{!setCon.previous}" rerender="pgBlock"/> &nbsp;&nbsp;
+            <apex:outputText rendered="{!(setCon.pageNumber * setCon.pageSize) < setCon.ResultSize}" value="{!setCon.pageNumber * setCon.pageSize} Of {!setCon.ResultSize}"></apex:outputText>
+            <apex:outputText rendered="{!(setCon.pageNumber * setCon.pageSize) >= setCon.ResultSize}" value="{!setCon.ResultSize} Of {!setCon.ResultSize}"></apex:outputText> &nbsp;&nbsp;
+           
+            <apex:commandLink rendered="{!setCon.hasNext}" value="Next" action="{!setCon.next}" rerender="pgBlock"/> &nbsp;&nbsp;
+            <apex:commandLink rendered="{!setCon.hasNext}" value="Last" action="{!setCon.last}" rerender="pgBlock"/>
+        </apex:pageBlock>
+        
+    </apex:form>
+
+</apex:page>

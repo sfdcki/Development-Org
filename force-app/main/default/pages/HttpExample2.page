@@ -1,0 +1,11 @@
+<apex:page controller="HttpExample2" action="{!showResult}">
+    <apex:form >
+    	<apex:pageBlock >
+            response:{!response}
+        	<apex:pageBlockTable value="{!names}" var="a">
+            	<apex:column value="{!a}"/>
+                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

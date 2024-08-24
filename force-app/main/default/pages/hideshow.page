@@ -1,0 +1,40 @@
+<apex:page >
+<script type="text/javascript">
+	function showmenu(elmnt){
+		document.getElementById(elmnt).style.visibility="visible";
+	}
+
+	function hidemenu(elmnt){
+		document.getElementById(elmnt).style.visibility="hidden";
+	}
+</script>
+<style>
+
+	body{font-family=arial;}
+
+	table{font-size=100%;background=white;width=50px;}
+	a{color=black;text-decoration=none;font=bold;}
+
+	table.menu{
+	font-size:100%;
+	position:absolute;
+	visibility:hidden;
+	}
+</style>
+
+
+<apex:form >
+<table>
+<tr>
+<td onmouseover="showmenu('tutorials')" onmouseout="hidemenu('tutorials')"> 
+Action
+<table class="menu" id="tutorials" width="120">
+<tr> <td> <a href="https://www.gmail.com">  gmail </a> </td> </tr>
+<tr> <td> <a href="https://www.salesforce.com"> salesforce </a> </td> </tr>
+</table>
+</td>
+</tr>
+</table>
+</apex:form>
+
+</apex:page>

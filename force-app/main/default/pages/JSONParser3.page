@@ -1,0 +1,7 @@
+<apex:page controller="JSONParser3">
+<apex:form >
+        <apex:pageBlock >
+            {!std}
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

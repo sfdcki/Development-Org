@@ -1,0 +1,12 @@
+<apex:page setup="false" sidebar="false" tabStyle="Position__c" controller="DynamicPicklistFiltersController" action="{!GetPicklistElements}" >
+<apex:sectionHeader title="Picklist Field" subtitle="Dynamic Picklist Values"/>
+<apex:form >
+    <apex:pageblock >
+        <apex:pageblocksection title="Dynamic Picklist Values" collapsible="false" columns="1">
+            <apex:selectlist label="Select the Country" multiselect="false" size="1">
+                <apex:selectoptions value="{!lstOptions}"/>
+            </apex:selectlist>
+        </apex:pageblocksection>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page tabStyle="Account" docType="html-5.0" sidebar="false" setup="false">
+    
+    <script type="text/javascript">
+    function setupPage() {
+      if(document.getElementById("Mover").value == "")
+            {
+                alert("Enter the name");
+                document.getElementById("Mover").focus();
+                return false;
+            }
+	alert(document.getElementById("Mover").value);
+  }
+ </script>
+    <apex:form id="form1">
+        <apex:sectionHeader title="Ajax" subtitle="Ajax Example"/>
+        <apex:pageBlock title="Ajax Test">
+            <apex:pageBlockSection title="Ajax Result" collapsible="false" columns="1">
+                    Enter the Name:<input type="text" label="Enter Name" id="Mover"/>
+                    <apex:commandButton value="Go!" onclick="setupPage()"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+     </apex:form>
+</apex:page>

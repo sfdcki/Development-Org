@@ -1,0 +1,526 @@
+.THIS .readOnlyGreyStyle {
+    background-color: grey;
+}
+
+.THIS .hideElementClass {
+    display: none ;
+}
+
+
+.THIS.accordion div.pane {
+    padding:5px 10px
+}
+.THIS td{
+    width:260px;  
+}
+
+.THIS.form-style-2{
+    text-align: center;
+    max-width: 800px;
+    padding: 20px 50px 200px 20px;
+    font: 13px Calibri, Helvetica, sans-serif;
+    margin-right: auto; margin-left: auto; 
+}
+
+
+.THIS.form-style-2 input[type=text]::-webkit-input-placeholder 
+{
+     font-size: 12px;
+    font-family: 'Open Sans';
+    opacity:.9;
+}
+.THIS.form-style-2 input[type=text]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   font-size: 12px;
+    font-family: 'Open Sans';
+    opacity:.9;
+}
+.THIS.form-style-2 input[type=text]::-moz-placeholder { /* Mozilla Firefox 19+ */
+   font-size: 12px;
+    font-family: 'Open Sans';
+    opacity:.9;
+}
+.THIS.form-style-2 input[type=text]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ font-size: 12px;
+    font-family: 'Open Sans';
+    opacity:.9;
+}
+.THIS.form-style-2 #txtInput::-webkit-input-placeholder
+{
+     font-size: 12px;
+    opacity:.9;
+}
+.THIS.form-style-2 #txtInput:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   font-size: 12px;
+    opacity:.9;
+}
+.THIS.form-style-2 #txtInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+   font-size: 12px;
+    opacity:.9;
+}
+.THIS.form-style-2 #txtInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ font-size: 12px;
+    opacity:.9;
+}
+
+.THIS.form-style-2 #number{
+    
+    font-family: 'Open Sans';
+}
+.THIS.form-style-2 label{
+    color: Black;
+    font-weight: 300;
+    padding-left: .5cm;
+    font-family: 'Open Sans';
+    float: left;
+     font-size:20px;
+   
+}
+.THIS.form-style-2  output[type="text"]
+{
+    display: block;
+    margin: 0px 0px 15px 0px;
+    color: Black;		
+    font-weight: 300;
+    
+    padding-left: 0.5cm;	
+    font-family: 'Open Sans';
+}
+.THIS.form-style-2 label > span{
+    width: 100px;
+    font-weight: bold;
+    float: left;
+    padding-top: 8px;
+    padding-right: 5px;
+}
+.THIS.form-style-2 #fieldRequired
+{
+    
+   position: relative; left:100px; 
+}
+
+.THIS.form-style-2 span.required{
+    color:red;
+}
+.THIS.form-style-2 span.req{
+    color:red;
+}
+.THIS.form-style-2 input.input-field{
+    width: 75%;
+}
+.THIS.form-style-2 input[type=submit]
+{
+    font-family: 'Open Sans';
+    font-size        : 1em;
+    font-weight: 700;
+    color            : #ffffff;
+    background-color : #009548 ;
+    border           : 1px solid ;
+    padding          : 5px;
+    font-weight: bold;
+  
+}
+.THIS.form-style-2 #clickforOptions{
+    font-size        : 1em;
+    background-color : #009548;
+    color            : #ffffff;
+    font-family: 'Open Sans';
+    border           : 1px solid ;
+    font-weight: bold;
+}
+
+.THIS.form-style-2 #refreshLink{
+    font-size        : .7em;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    margin-left:10px;
+    
+}
+.THIS.form-style-2 #continue{
+    font-family: 'Open Sans';
+    font-size        : 1em;
+    font-weight: 700;
+    color            : #ffffff;
+    background-color : #009548 ;
+    border           : 1px solid ;
+    padding          : 5px;
+    font-weight: bold;
+}
+
+.THIS.form-style-2 #continue:hover,.THIS.form-style-2 #hover:hover,.THIS.form-style-2 #terms:hover,.THIS.form-style-2 #clickforOptions:hover{
+  
+   background: #00622f;
+}
+
+.THIS.form-style-2 #btnPhone{
+    background-image : url(/getsupport/s/call.png) ;
+    background-repeat: no-repeat ;
+    width: 120px;
+    height: 68px;
+    border: none;
+    
+}
+.THIS.form-style-2 #btnEmail{
+    background-image : url(/getsupport/s/mail.png) ;
+    background-repeat: no-repeat ;
+    width: 120px;
+    height: 66px;
+    border: none;
+    
+    
+}
+
+.THIS.form-style-2 #btnChat{
+    background-image : url(/getsupport/s/chat.png) ;
+    background-repeat: no-repeat ;
+    border: none;
+    width: 120px;
+    height: 65.6px;
+    
+}
+.THIS.form-style-2 #paragraph
+{
+        text-align: end;
+    margin-right: 25px;
+}
+.THIS.form-style-2 #notreq
+{
+        text-align: end;
+    margin-right: 33px;
+}
+.THIS.form-style-2 .textfield
+{
+   text-overflow: ellipsis;
+    opacity: .9;
+     border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+    color: black;
+    
+    font-family: 'Open Sans';
+    height: 2.5em;
+   
+    padding-left: 0.3cm; 
+}
+.THIS.form-style-2 #Captcha {
+    text-align: center;
+    margin-left: 45px;
+     
+   text-overflow: ellipsis;
+    opacity: .9;
+     border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+    color: black;
+    font-family: 'Open Sans';
+}
+.THIS.form-style-2 #txtInput{
+     text-align: center;
+     position: relative;
+            margin-left: 0px;
+            display:inline-block;
+   text-overflow: ellipsis;
+    opacity: .9;
+     border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+    color: black;
+    font-family: 'Open Sans';
+}
+.THIS.form-style-2 .messagetextfield
+{
+     vertical-align:middle;
+   text-overflow: ellipsis;
+    opacity: .9;
+    
+     border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+    color: black;
+    font-family: 'Open Sans';
+    height: 6em;
+   
+    padding-left: 0.3cm; 
+}
+.THIS.form-style-2 input[type=text]
+{
+    text-overflow: ellipsis;
+    opacity: .9;
+     border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+    color: black;
+    font-family: 'Open Sans';
+    height: 3.0em;
+    width: 95%;
+    padding-left: 1cm;
+}
+
+.THIS.inputCss{
+    width: 250px !important;
+}
+.THIS.body {		
+    background-color : #FFFFFF		
+}		
+.THIS.inputCss{		
+    width: 250px !important;		        
+}
+.THIS.p		
+{		
+    padding-left: 1.0cm;		
+}	
+.THIS.form-style-2 h3{
+    border-style:solid;
+    border-color: white;
+    background-color : #009548;		
+    color: white;
+    padding: 4px 12px;
+    font-size:150%;	
+    padding-left: 0.5cm;
+    font-family: 'Open Sans';
+    font-weight: bold;
+}	
+.THIS.form-style-2 h4{		
+    color: Black;		
+    font-size:150%;		
+    padding-left: 0.5cm;	
+    font-family: 'Open Sans';
+}		
+.THIS.form-style-2 h5{		
+    color: Black;		
+    font-size:120%;		
+    padding-left: 0.5cm;	
+    font-family: 'Open Sans';
+    font-family: 'Open Sans';
+}
+
+.THIS.form-style-2 .topdropdown{
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+    color: Black;
+    border: 1px solid #BFBFBF;
+    font-family: 'Open Sans';
+    height: 3.0em;
+    width: 75%;
+    opacity: .9;
+    padding-left: 1cm;
+}
+
+.THIS.cPS_CSS_ContactSupport.form-style-2 width
+{
+    width:95%;
+}
+
+
+
+
+@media screen and (min-width: 30em) 
+    {
+    .THIS.form-style-2 #WaitingMsg{
+        display:none; 
+        position:relative;
+        left:160px;
+    }
+    .THIS.form-style-2 #progressBar{
+        display:none; 
+        margin-left: 200px ;
+        width: 400px;
+        height: 22px;
+        border: 1px solid #111; 
+        background-color: #fff; 
+            
+    }
+    .THIS.form-style-2 #innerprogressBar{
+        display:none; 
+        height: 100%;
+        text-align: center;
+        line-height: 22px;
+        width: 0;
+        background-color: #001e33;
+        
+    }
+    .THIS.form-style-2 label{
+             font-size:20px;
+    }
+      .THIS.form-style-2 .textfield
+     {
+        width:42%;
+    }
+    .THIS.form-style-2 .messagetextfield
+    {
+        width:42%;
+    }
+    
+    .THIS.form-style-2 #Terms{
+    margin-left : 150px;
+}
+    .THIS.form-style-2 #Term{
+    font-size        : 1em;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    margin-left: 100px;
+            
+}
+}
+@media screen and (max-width: 801px) and (min-width: 601px)
+    {
+    .THIS.form-style-2 label{
+             font-size:20px;
+    }
+      .THIS.form-style-2 .textfield
+     {
+        width:42%;
+    }
+    
+    .THIS.form-style-2 .messagetextfield
+    {
+        width:42%;
+    }
+    
+    .THIS.form-style-2 #Terms{
+    margin-left : 150px;
+}
+    .THIS.form-style-2 #Term{
+    font-size        : 1em;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    margin-left: 75px
+}
+    .THIS.form-style-2 #WaitingMsg{
+        display:none; 
+        position:relative;
+        left:160px;
+    }
+    .THIS.form-style-2 #progressBar{
+        display:none; 
+        margin-left: 200px ;
+        width: 400px;
+        height: 22px;
+        border: 1px solid #111; 
+        background-color: #fff; 
+            
+    }
+    .THIS.form-style-2 #innerprogressBar{
+        display:none; 
+        height: 100%;
+        text-align: center;
+        line-height: 22px;
+        width: 0;
+        background-color: #001e33;
+        
+    }
+    
+}
+
+@media screen and (max-width: 600px) and (min-width: 321px){
+    .THIS.form-style-2{
+   width: 110%;
+            margin-top: 10px;
+        margin-right: 40%;
+    }
+     .THIS.form-style-2 label{
+           font-size:15px;
+    }
+    .THIS.form-style-2 #txtInput{
+        margin-left: 0.5px;
+    }
+    .THIS.form-style-2 .textfield
+     {
+        width:92%;
+    }
+    .THIS.form-style-2 .messagetextfield
+    {
+        width:92%;
+    }
+       .THIS.form-style-2 #Terms{
+        position: relative;
+        right: 5px;
+        top: 2px;
+    }
+    .THIS.form-style-2 #Term{
+        font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 30px;
+   
+    }
+     
+    .THIS.form-style-2 #WaitingMsg{
+        display:none; 
+        
+    }
+    .THIS.form-style-2 #progressBar{
+        display:none; 
+        margin-top:30px;
+        margin-left: 25px ;
+        width: 260px;
+        height: 22px;
+        border: 1px solid #111; 
+        background-color: #fff; 
+            
+    }
+    .THIS.form-style-2 #innerprogressBar{
+        display:none; 
+        height: 100%;
+        text-align: center;
+        line-height: 22px;
+        width: 0;
+        background-color: #001e33;
+        
+    }
+}
+ 
+@media screen and (max-width: 320px){
+    .THIS.form-style-2 #WaitingMsg{
+        display:none; 
+        
+    }
+    .THIS.form-style-2 #progressBar{
+        display:none; 
+        margin-top:30px;
+        margin-left: 20px ;
+        width: 220px;
+        height: 22px;
+        border: 1px solid #111; 
+        background-color: #fff; 
+            
+    }
+    .THIS.form-style-2 #innerprogressBar{
+        display:none; 
+        height: 100%;
+        text-align: center;
+        line-height: 22px;
+        width: 0;
+        background-color: #001e33;
+        
+    }
+    .THIS.form-style-2{
+   width: 110%;
+            margin-top: 10px;
+        margin-right: 40%;
+    }
+     .THIS.form-style-2 label{
+           font-size:15px;
+    }
+    .THIS.form-style-2 .textfield
+     {
+        width:91%;
+    }
+    .THIS.form-style-2 .messagetextfield
+    {
+        width:91%;
+    }
+      .THIS.form-style-2 #Terms{
+        position: relative;
+        right: 5px;
+        top: 2px;
+    }
+    .THIS.form-style-2 #Term{
+    font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 12px;
+   
+    }
+
+    
+    
+}

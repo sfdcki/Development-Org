@@ -1,0 +1,18 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />    
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function() {
+        j$("#alk").click(function(){var c=confirm('you are leaving this page!');
+                                   if(c){
+                                       j$("#pmsg").text('You selected the navigation');
+                                       return true;}else{
+                                           j$("#pmsg").text('You clicked cancel the navigation');
+                                           return false;}});			
+         });
+ </script>
+    <apex:form >
+        <p id="pmsg"> Hello select the link</p>
+        <a href="https://www.google.co.in/?gfe_rd=cr&ei=vXiGV-XfDpPmugSXhJWADw&gws_rd=ssl" id="alk">Google!</a>
+    </apex:form>
+</apex:page>

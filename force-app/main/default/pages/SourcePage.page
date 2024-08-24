@@ -1,0 +1,16 @@
+<apex:page sidebar="false" setup="false" showHeader="true" tabStyle="Customer__c" controller="SourcePageController" >
+<apex:sectionHeader title="Source Page" subtitle="Page Navigation"/>
+<apex:form >
+    <apex:pageblock title="Source Page Block">
+        <apex:pageblockSection title="Source Page Section" collapsible="false" columns="1">
+        
+            <apex:inputtext label="Enter Customer Id : " value="{!customerId}"/>
+            <apex:inputtext label="Enter Customer Name: " value="{!customerName}"/>
+            
+            <apex:commandButton value="Goto Target Page" action="{!GotoTargetPage}"/>
+            
+        </apex:pageblockSection>
+        
+    </apex:pageblock>
+</apex:form>
+</apex:page>

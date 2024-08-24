@@ -1,0 +1,53 @@
+<apex:page sidebar="false" setup="false" showHeader="true" tabStyle="Candidate__c" standardController="Candidate__c" extensions="CandidateExtension">
+<script type="text/javascript">
+ function nameValidate(){
+ 	var name = document.getElementById("Na").value;
+     if(name.length == 0)
+  {
+      alert("Enter the Name");
+      document.getElementById("Na").focus();
+      return;
+  }
+   Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CandidateExtension.searchCandidate}',name,function(result,event){
+   if(event.status){ 
+       var strResult = "<table border=2 width=20><tr><th>Candidate Id</th><th>Candidate name</th><th>Age</th><th>Country</th><th>Manager</th><th>Qlfd.Year</th></tr>";
+       if(result.length == 0)
+           {
+               document.getElementById("oput").innerHTML = "No records identified for search criteria";
+               }
+       else{
+       for(var i=0; i<result.length; i++)
+           {
+               strResult += "<tr><td>"+result[i].Id+"</td><td>"+result[i].Name+"</td><td>"+result[i].Age__c+"</td><td>"+result[i].Country__c+"</td><td>"+result[i].Manager__c+"</td><td>"+result[i].Qualified_Year__c+"</td></tr>";
+               }
+       strResult += "</table>";
+       document.getElementById("oput").innerHTML = strResult;}
+       return false;
+   } else if(event.type == 'exception')
+       {document.getElementById("responseErrors").innerHTML = event.message + event.where;}
+       else
+           {document.getElementById("responseErrors").innerHTML = event.message;}
+   },{escape: true});   
+  }
+    
+</script>
+    <apex:form >
+<apex:sectionHeader title="Candidate" subtitle="Candidate Details"/>
+<apex:pageBlock title="Candidate Information">
+<apex:pageBlockButtons location="top">
+    <apex:commandButton value="New Candidate" action="{!URLFor($Action.Candidate__c.Edit,$Objecttype.Candidate__c)}"/> 
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="Candidate Search" collapsible="true" columns="2">
+    <input type="text" label="Enter Name" placeholder="Enter Candidate Name" id="Na"/>
+    <input type="button" value="Search" onclick="nameValidate()"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Search Results" collapsible="true">
+    <div id="oput"></div>
+</apex:pageBlockSection>
+</apex:pageBlock>
+        </apex:form>
+    <apex:pageBlock >
+            <apex:enhancedList customizable="false" height="300" type="Candidate__c"/>
+    </apex:pageBlock>
+    <div id="responseErrors"></div>
+</apex:page>

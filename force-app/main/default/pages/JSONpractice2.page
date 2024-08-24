@@ -1,0 +1,5 @@
+<apex:page sidebar="false" controller="JSONpractice2" action="{!show}">
+    <apex:pageBlock >
+    	{!testGen}
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page >
+<script src="../../soap/ajax/36.0/connection.js" type="text/javascript"></script>
+<script>
+    var result = sforce.connection.login("uday_kiran_87@yahoo.com","Uday1234@y0jQppPDLYfEF2xNkV82LYQH"); 
+    sforce.connection.sessionId = result.sessionId;
+    var myrecords = sforce.connection.query("select id,name from Account LIMIT 3");
+    var records = myrecords.getArray("records");
+    var output = "";
+    for(var i = 0; i < records.length; i++)
+        {
+            var accounts = records[i];
+            output += accounts.Id+ " " + accounts.Name+"\n";
+        }
+alert(output);
+    </script>
+</apex:page>

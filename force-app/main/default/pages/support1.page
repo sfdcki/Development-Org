@@ -1,0 +1,95 @@
+<apex:page setup="false" showHeader="false" controller="support1" docType="html-5.0">
+    <apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    
+    <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){
+        j$("#but").click(function() {
+            nam = j$("#name").val();
+            ema = j$("#email").val();
+            des = j$("#desc").val();
+            var retVal = validate();   
+                      
+            if(retVal == 1)
+                {
+                j$("#name").val('');
+            	j$("#email").val('');
+            	j$("#desc").val('');
+                j$("#en").val('');
+            	j$("#em").val('');
+            	j$("#ds").val('');
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.support1.caseIsrt}',nam,ema,des,function(result,event){
+                		if(event.status){ 
+                    	 	if(result.length > 0)
+                        		{
+                            		var caseId = result;
+                                    	j$("#div1").html(caseId);
+                                    	liveagent.startChat('57328000000Ceg3');
+                                        } 
+                            else if(event.type == 'exception')
+       									{	J$("#div1").html(event.message + event.where);
+                                        }
+       			    		else 		{	J$("#div1").html(event.message);
+                                 		}
+                                        }
+                },{escape: true});
+                } 
+         });
+        });     
+    	function validate()
+    {
+        if(nam == '')
+            {
+                j$("#en").html('Name is mandatory field');
+                return 0;
+            }
+        if(ema == '')
+            {
+                j$("#en").html('');
+                j$("#em").html('Email is mandatory field');
+                return 0;
+            }
+        if(des == '')
+            {
+                j$("#em").html('');
+                j$("#ds").html('description is mandatory field');
+                return 0;
+            }
+        j$("#ds").html('');
+        return 1;
+    };
+        </script>
+    <script type="text/javascript">
+		if (!window._laq) { window._laq = []; }
+		window._laq.push(function(){liveagent.showWhenOnline('57328000000Ceg3', document.getElementById('liveagent_button_online_57328000000Ceg3'));
+                            liveagent.setChatWindowHeight(100);
+            				liveagent.setChatWindowWidth(100);
+                                    liveagent.addCustomDetail("Case Subject", "Best snowboard for a beginner").doKnowledgeSearch();
+                                    liveagent.addCustomDetail("Case Status", "New");
+                                    liveagent.findOrCreate("Case").map("Subject","Case Subject",true,false,true).map("Status","Case Status",false,false,true).saveToTranscript("CaseId").showOnCreate();
+                                    //  liveagent.findOrCreate("Case").map("Id",caseId,true,false,false);
+	liveagent.showWhenOffline('57328000000Ceg3', document.getElementById('liveagent_button_offline_57328000000Ceg3'));
+			});</script>
+    
+<apex:form >
+    
+    <table>
+        <tr><th>Enter name:</th><td><input type="text" id="name"/></td></tr>
+        <tr><th></th><td><div id="en"></div></td></tr>
+        <tr><th>Enter email:</th><td><input type="email" id="email"/></td></tr>
+        <tr><th></th><td><div id="em"></div></td></tr>
+        <tr><th>Enter description:</th><td><input type="text" id="desc"/></td></tr>
+        <tr><th></th><td><div id="ds"></div></td></tr>
+        <tr><th>Chat --)</th><td><input type="button" id="but" value="enter chat"/></td></tr>
+    </table>
+    <span id="div1"></span>
+     
+ <!--   <img id="liveagent_button_online_57328000000Ceg3" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('57328000000Ceg3')" src="https://udaykiran99-developer-edition.ap2.force.com/customersupport/resource/1475170086000/Online" /><img id="liveagent_button_offline_57328000000Ceg3" style="display: none; border: 0px none; " src="https://udaykiran99-developer-edition.ap2.force.com/customersupport/resource/1475170132000/Offline" /> -->
+    </apex:form>
+    
+
+<script type='text/javascript' src='https://c.la10.salesforceliveagent.com/content/g/js/37.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la10.salesforceliveagent.com/chat', '572280000008S2p', '00D28000001DnKH');
+</script>
+</apex:page>

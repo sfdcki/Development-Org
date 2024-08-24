@@ -1,0 +1,14 @@
+<apex:page setup="false" sidebar="false" showheader="true" controller="AccountList">
+<apex:sectionHeader title="Accounts" subtitle="Accounts Details"/>
+<apex:form >
+    <apex:pageblock >
+        <apex:pageblockSection >
+            <apex:selectList multiselect="false" size="1" label="AccountsList" value="{!selectedAccountID}">
+                    <apex:selectoptions value="{!LstOption}"></apex:selectoptions>
+            </apex:selectList>
+            <apex:commandButton value="select AccountID" rerender="ShowID"/>
+            <apex:outputlabel Id="ShowID">Selecte Account id is {!selectedAccountID}</apex:outputlabel>
+        </apex:pageblockSection>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

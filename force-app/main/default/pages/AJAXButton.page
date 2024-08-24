@@ -1,0 +1,76 @@
+<apex:page tabStyle="Account" docType="html-5.0" sidebar="false" setup="false">
+    
+    <script type="text/javascript">
+    var __sfdcSessionId = '{!GETSESSIONID()}';
+    </script>
+    
+    <script src="../../soap/ajax/37.0/connection.js"
+          type="text/javascript">
+    </script>
+    
+    <script type="text/javascript">
+    function setupPage() {
+      if(document.getElementById("Mover").value == "")
+            {
+                alert("Enter the name");
+                document.getElementById("Mover").focus();
+                return false;
+            }
+        
+        //function contains all code to execute after page is rendered
+      var serchKey = "";
+      serchKey += document.getElementById("Mover").value;
+      serchKey += "%";
+      var state = {output : document.getElementById("output"),startTime : new Date().getTime()};
+      var callback = {onSuccess: layoutResults,onFailure: queryFailed,source: state};
+      sforce.connection.query("Select id,name,industry From Account where name like '"+serchKey+"'",callback);
+       
+  }
+
+  function queryFailed(error, source) {
+
+    source.output.innerHTML = "An error has occurred: " + error;
+      return false;
+  }
+  /**
+  * This method will be called when the toolkit receives a successful
+  * response from the server.
+  * @queryResult - result that server returned
+  * @source - state passed into the query method1 call.
+  */
+  function layoutResults(queryResult, source) {          
+          if (queryResult.size > 0) {
+      var output = "";
+      //get the records array
+              alert(queryResult);
+      var records = queryResult.getArray('records');
+              alert(records);
+      //render the generated html string
+        
+         var strResult = "<table border=1 width=20><tr><th>Account Id</th><th>Account name</th><th>Industry</th></tr>"
+            for(var i=0; i<records.length; i++)
+                {
+                    strResult += "<tr><td>"+records[i].Id+"</td><td>"+records[i].Name+"</td><td>"+records[i].Industry+"</td></tr>"
+                }
+       strResult +="</table>";
+     
+    source.output.innerHTML = strResult;
+              return false;
+        }
+  }
+ </script>
+    <apex:form id="form1">
+        <apex:sectionHeader title="Ajax" subtitle="Ajax Example"/>
+        <apex:pageBlock title="Ajax Test">
+            <apex:pageBlockSection title="Ajax Result" collapsible="false">
+                    <input type="text" label="Enter Name" id="Mover"/>
+                    <input type="button" value="Go!" onclick="setupPage()"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageblock title="AJAX Search Result">
+            <apex:pageBlockSection >
+                <div id="output"></div>
+            </apex:pageBlockSection>
+            </apex:pageblock>
+     </apex:form>
+</apex:page>

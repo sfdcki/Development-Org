@@ -1,0 +1,27 @@
+<apex:page sidebar="false" setup="false" showHeader="false"> 
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){ 
+			j$('input[type="text"]').focus(function(){
+            	tex_sel = j$(this);
+                min_len = tex_sel.attr('minlength');
+                if(tex_sel.val().length < min_len && min_len > 0)
+                    {
+                        tex_sel.after('<span>'+min_len+'characters required'+'</span>');
+                        }
+            }).keyup(function(){
+            	if(tex_sel.val().length > 5)
+                    {
+                    	tex_sel.next().remove();
+                    }
+            }).blur(function(){
+            	tex_sel.next().remove();	
+            });
+        });        
+     </script>
+<apex:form id="form">
+    <p>5: <input type="text" minlength="5"/></p>
+    <p>10: <input type="text" minlength="10"/></p>    
+    </apex:form>
+</apex:page>

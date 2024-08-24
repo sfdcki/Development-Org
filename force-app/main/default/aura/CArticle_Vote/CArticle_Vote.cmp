@@ -1,0 +1,35 @@
+<aura:component controller="CArticle_Vote" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+        <ltng:require scripts="/resource/jquery/lib/jquery-1.11.3.min.js"/> 
+    	<aura:attribute name="subject" type="string" access="global"/>
+        <aura:attribute name="URL" type="string" access="global"/>
+
+   <!-- <c:svgIcon class="slds-input__icon slds-icon-text-default" svgPath="{!$Resource.SLDS + '/assets/icons/utility-sprite/svg/symbols.svg#like'}" size="small"/> -->
+	<div class="slds-grid slds-wrap slds-grid--pull-padded">
+          <div class="slds-p-horizontal--small slds-size--1-of-1 slds-form-element__label slds-text-heading--small">Was this article helpful?</div>
+        <div class="slds-p-horizontal--small slds-size--1-of-1">
+            <!-- <input type="radio" name="vote" id="Y" value="Yes"/> <label class="slds-form-element__label">Yes</label>
+            <input type="radio" name="vote" id="N" value="No"/> <label class="slds-form-element__label">No</label>       -->
+            <button class="slds-button slds-buttonicon-border slds-m-right--large" aria-live="assertive" title="Like" onclick="{!c.setlike}" id="like">
+                <img src="/s/thumbs-up.png"  alt="like" class="small-spinner" style="border: 1px solid #ddd;border-radius: 4px;padding: 2x;width: 28px; height: 28px; " />
+                </button>
+         <button class="slds-button slds-buttonicon-border slds-m-right--large" aria-live="assertive" title="Like" onclick="{!c.setlike}" id="like">
+                    <c:svgIcon class="slds-input__icon slds-icon-text-default" svgPath="/resource/SLDSNEW/assets/icons/utility-sprite/svg/symbols.svg#like" 
+                                        size="small"/>
+                 
+                </button>
+     	 <button class="slds-button slds-buttonicon-border" aria-live="assertive" title="disLike" onclick="{!c.setdlike}" id="dlike">
+                    <c:svgIcon class="slds-input__icon slds-icon-text-default" svgPath="/resource/SLDSNEW/assets/icons/utility-sprite/svg/symbols.svg#dislike" 
+                                        size="small"/>
+                 
+                </button> 
+        <div class="slds-p-horizontal--small slds-size--1-of-1">
+            <label class="slds-form-element__label">Comments</label><br/>
+                      				<textarea rows="5" cols="45" id="articleComments" value="{!recordId}" placeholder="Enter comments here"></textarea>
+                </div>
+            </div>
+    <div class="slds-p-horizontal--small slds-size--1-of-1">
+    	<ui:button label="Submit" class="slds-button slds-button--neutral"
+                               labelClass="slds-form-element__label" 
+                               press="{!c.createVote}"/></div>
+    </div>
+</aura:component>

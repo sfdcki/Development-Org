@@ -1,0 +1,83 @@
+<apex:page sidebar="false" setup="false" docType="html-5.0" showHeader="false">
+
+    <script type="text/javaScript">
+    function tPage()
+    {
+        
+        document.getElementById("Frame").src = "/apex/pageAJAX";
+        
+        
+       }
+
+    </script>
+<apex:form >
+   
+
+<style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:10px;
+    background-color:#eeeeee;
+    height:90%;
+    width:100%;
+    float:left;
+    padding:5px;
+}
+#Frame1 {
+    width:75%;
+    float:left;
+    padding:10px;
+    height:90%
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+</style>
+
+<body>
+
+<div id="header">
+<h1>City Gallery</h1>
+</div>
+
+<div id="nav">
+    <table>
+        <tr>
+        <td>
+            <div width="10%">
+			<br><a href="#" id="CSR" onclick="tPage()">Case Registration form</a></br>
+			<br><a href="#" id="ADR" onclick="tPage()">Case Registration form</a></br>
+ 			<br><a href="#" id="RRQ" onclick="tPage()">Case Registration form</a></br>
+    		</div>
+        </td>
+        <td>
+            <div width="90%">
+        	<apex:iframe id="Frame" src=""/>        
+                </div>
+    	</td>
+        </tr>
+    </table>     
+  
+</div>
+
+
+
+<div id="footer">
+Copyright © W3Schools.com
+</div>
+
+</body>
+
+           
+     
+    </apex:form>
+</apex:page>

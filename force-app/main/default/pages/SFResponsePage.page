@@ -1,0 +1,18 @@
+<apex:page controller="SFServerAuthentication" action="{!generatecode}">
+    <apex:form >
+        <apex:pageBlock title="HTTP3">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Get Access Token" action="{!getAccessToken}" reRender="Tok"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="Enter client Id" value="{!clientId}"/>
+                <apex:inputText label="Enter secret key" value="{!clientsecret}"/>
+                <apex:inputText label="Enter callback URL" value="{!callbackurl}"/>
+                <apex:inputText label="Web code" value="{!code}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="AccessToken" id="Tok">
+                    {!accessToken}
+                </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,67 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){
+            j$("#drag").draggable({containment: 'document', revert: true});
+            j$("#save").click(function(){
+                                        j$("#div").dialog({modal:true,overlay:{opacity:10.0}});  });
+            j$("#close").click(function(){
+                j$("#div").dialog('close');});
+            j$("#submit").click(function(){
+                j$("#div").dialog('close');
+                j$("#div1").dialog({buttons: {'OK':function(){j$("#div1").dialog('close');}},modal:true,overlay:{opacity:10.0}});});
+            });
+     </script>
+    <style>
+    	#div, #div1 {
+        	autoOpen: false;
+        	background-color: #92a1b0;
+        	display: none;
+        	padding: 5px;
+        	color: #FFF;
+        	border-radius: 10px;
+        	z-index: -20;
+  
+        }
+        #submit, #close {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#7e8082), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #7e8082, #65a9d7);
+   background: -moz-linear-gradient(top, #7e8082, #65a9d7);
+   background: -ms-linear-gradient(top, #7e8082, #65a9d7);
+   background: -o-linear-gradient(top, #7e8082, #65a9d7);
+   padding: 5px 5px;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 10px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: left;
+   }
+   </style>
+<apex:form id="form">
+    <input type="button" id="save" value="Save"/>
+    <span id="drag"> Please click save if you want to enroll!!</span>
+    <div id="div" title="Share your interest with us!">
+    <table>
+        <tr><th>Name:</th><td><input type="text"/></td></tr>
+        <tr><th>City:</th><td><input type="text"/></td></tr>
+    	<tr><th>Email:</th><td><input type="email"/></td></tr>
+    	<tr><th><input type="button" value="Submit" id="submit"/></th><td><input type="button" value="Cancel" id="close"/></td></tr>
+    </table>
+    </div>
+    <div id="div1" title="Data saved!">
+        Thank you for your interest! Our sales team contact you soon.
+    </div>
+    </apex:form>
+</apex:page>

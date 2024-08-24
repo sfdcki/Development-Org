@@ -1,0 +1,65 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){
+           j$("#tabs").tabs();
+            j$("input[id$='inp']").change(function(){
+            // j$("#inp").change(function() {
+               if(j$(this).is(":checked"))
+                   {alert("Offline request is submitted!");}
+          	
+           
+          });  
+            });
+     </script>
+    <style>
+        #tabs {
+        	width: 50%;
+        	height: 200px;
+        	margin: 0px;
+			padding: 0px;
+			list-style: none;
+        }
+        #lit{
+			background: none;
+			color: #222;
+			display: inline-block;
+        //padding: 10px 15px;
+			cursor: pointer;
+		}
+        #lit.current{
+			background: #ededed;
+			color: #222;
+		}
+
+   </style>
+<apex:form id="form">
+    Name1: <apex:inputcheckbox id="inp"/>
+   <div id="tabs">
+       <ul>
+       <li id="lit"><a href="#Hi">Hi!</a></li>
+       <li id="lit"><a href="#Hi1">Hi1!</a></li>
+       <li id="lit"><a href="#Hi2">Hi2!</a></li>
+       <li id="lit"><a href="#Hi3">Hi3!</a></li>
+       </ul>
+       <div id="Hi">
+           Name: <input type="text" label="Enter name"/>
+           <p>Hello!</p>
+       </div>
+       <div id="Hi1">
+           Name: <input type="text" label="Enter name"/>
+           <p>Hello1!</p>
+       </div>
+       <div id="Hi2">
+           <p>Hello2!</p>
+       </div>
+       <div id="Hi3">
+           <p>Hello3!</p>
+       </div>
+    </div>
+   
+    </apex:form>
+</apex:page>

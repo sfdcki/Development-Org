@@ -1,0 +1,32 @@
+<apex:page setup="false" sidebar="false" showheader="true" controller="PicklistRadio">
+<apex:sectionHeader title="Picklist" subtitle="Picklist-Radio-Box"/>
+<apex:form >
+<apex:pageblock title="InputComponents">
+    <apex:pageBlockButtons >
+        <apex:commandButton value="Select"/>
+    </apex:pageBlockButtons>
+    <apex:pageblockSection title="PickList" collapsible="true">
+        <apex:selectList label="Country List" multiselect="true" size="3" value="{!SelectedCountryList}">
+            <apex:selectoption itemlabel="----None----" itemvalue=""></apex:selectoption>
+            <apex:selectoption itemlabel="INDIA" itemvalue="IND"></apex:selectoption>
+            <apex:selectoption itemlabel="JAPAN" itemvalue="JPN"></apex:selectoption>
+            <apex:selectoption itemlabel="CHINA" itemvalue="CHN"></apex:selectoption>
+            <apex:selectoption itemlabel="AMERICA" itemvalue="USA"></apex:selectoption>
+        </apex:selectList>
+        <apex:outputlabel >Selected value is: {!SelectedCountryList}</apex:outputlabel>
+            
+    </apex:pageblockSection>
+    <apex:pageblockSection title="RadioButton">
+        <apex:selectRadio label="RadioCountry" value="{!SelectedCountryList1}">
+            <apex:selectoption itemlabel="INDIA" itemvalue="IND"></apex:selectoption>
+            <apex:selectoption itemlabel="CHINA" itemvalue="CHN"></apex:selectoption>
+            <apex:selectoption itemlabel="AMERICA" itemvalue="USA"></apex:selectoption>
+            <apex:selectoption itemlabel="JAPAN" itemvalue="JPN"></apex:selectoption>
+        </apex:selectRadio>
+     <apex:outputlabel >Selected value is: {!SelectedCountryList1}</apex:outputlabel>   
+    </apex:pageblockSection>
+    
+
+</apex:pageblock>
+</apex:form>
+</apex:page>

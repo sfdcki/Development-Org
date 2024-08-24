@@ -1,0 +1,29 @@
+<apex:page showHeader="false" docType="html-5.0" sidebar="false" setup="false">
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />    
+    <script>     
+        j$=jQuery.noConflict();
+    j$(document).ready(function() {
+    j$("#sname").keyup(function(){
+    	j$("#listt li").removeClass('liback');
+        var search_name = j$("#sname").val();
+        if(jQuery.trim(search_name) != '')
+            {
+        j$("#listt li:contains('" + search_name + "')").addClass('liback');
+                }
+    });
+    });
+ </script>
+    <style>
+    	#listt {list-style-type: none;}
+        .liback {background-color: yellow;}
+    </style>
+    <apex:form >
+        <input type="text" id="sname"/>
+        <ul id="listt">
+            <li>uday1</li>
+            <li>uday2</li>
+            <li>uday3</li>
+            <li>uday4</li>
+        </ul>
+    </apex:form>
+</apex:page>

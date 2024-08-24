@@ -1,0 +1,36 @@
+<apex:page sidebar="false" setup="false" showHeader="false"> 
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/lib/jquery-1.11.3.min.js')}" />
+  <script type="text/javascript">
+     j$=jQuery.noConflict();
+        j$(document).ready(function(){ 
+            function setmid(){
+             win_height = j$(window).height();
+            win_width = j$(window).width();
+            obj_width = j$("#msg").width();
+            obj_height = j$("#msg").height();
+                j$("#msg").css('top',(win_height/2)-(obj_height/2)).css('left',(win_width/2)-(obj_width/2));
+            }
+            setmid();
+            j$(window).resize(function(){
+            	setmid();
+            });
+        });        
+     </script>
+    <style>
+    	#msg {
+        	position: absolute;
+        	background-color: #FBFBAB;
+        	width: 350px;
+        	height: 150px;
+        	padding: 20px;
+        	text-align: center;
+        }
+
+    
+    </style>
+<apex:form id="form">
+	<div id="msg">        
+    </div>
+        
+    </apex:form>
+</apex:page>
