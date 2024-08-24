@@ -13,6 +13,7 @@ public class AccountContact {
                 System.debug('Account Rec is '+Ac1);
                 system.debug('test debug');
                 system.debug('test debug1');
+                system.debug('test debug2');
         	   		if(Ac1.id == Co1.accountid & Co1.Phone != Ac1.Phone)
                     {
                     Co1.Phone = Ac1.Phone;
