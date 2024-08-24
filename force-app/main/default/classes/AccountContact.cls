@@ -11,6 +11,7 @@ public class AccountContact {
                 for(Contact Co1:Con)
                 {
                 System.debug('Account Rec is '+Ac1);
+                system.debug('test debug');
         	   		if(Ac1.id == Co1.accountid & Co1.Phone != Ac1.Phone)
                     {
                     Co1.Phone = Ac1.Phone;
